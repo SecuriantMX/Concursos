@@ -53,15 +53,19 @@ def dist_aciertos(c):
     return d
 
 
-def mejor_por_probabilidad(P, juego, presupuesto):
+def formas(juego, presupuesto, n):
+    """Pares (triples, dobles) permitidos por la tabla oficial que caben en el presupuesto."""
+    return [(t, d) for t, dmax in juego["max_dobles"].items() for d in range(dmax + 1)
+            if juego["precio"] * 3 ** t * 2 ** d <= presupuesto and t + d <= n]
+
+
+def mejor_por_probabilidad(P, juego, presupuesto, forma=None):
     """Boleto que maximiza la probabilidad de acertar todo. Busqueda exhaustiva."""
     n = len(P)
     orden = [sorted(range(3), key=lambda o: -P[i][o]) for i in range(n)]
     mejor, mejor_p = None, -1
-    for t, dmax in juego["max_dobles"].items():
-        for d in range(dmax + 1):
-            if juego["precio"] * 3 ** t * 2 ** d > presupuesto or t + d > n:
-                continue
+    for t, d in ([forma] if forma else formas(juego, presupuesto, n)):
+        if True:
             for trip in combinations(range(n), t):
                 resto = [i for i in range(n) if i not in trip]
                 # con los triples fijos, los dobles van donde mas sube la cobertura
@@ -96,25 +100,28 @@ def valor_esperado(boleto, P, Q, N):
     return total
 
 
-def mejor_por_valor(P, Q, N, juego, presupuesto, piso_prob=0.0, semilla=7, reinicios=30):
+def mejor_por_valor(P, Q, N, juego, presupuesto, piso_prob=0.0, triples_fijos=(), semilla=7, reinicios=12):
     """
     Busqueda local: maximiza el valor esperado de la bolsa de primer lugar
     sujeto a que la probabilidad de acertar todo no baje de piso_prob.
     """
     rng = random.Random(semilla)
-    base = mejor_por_probabilidad(P, juego, presupuesto)
     n = len(P)
+    fijos = set(triples_fijos)  # partidos sin estimacion: se cubren completos
 
     def puntaje(b):
-        if prod(cobertura(b, P)) < piso_prob:
+        if any(len(b[i]) != 3 for i in fijos) or prod(cobertura(b, P)) < piso_prob:
             return -1.0
         return valor_esperado(b, P, Q, N)
 
-    mejor, mejor_v = base, puntaje(base)
-    for r in range(reinicios):
+    mejor, mejor_v = None, -1.0
+    salidas = [mejor_por_probabilidad(P, juego, presupuesto, f) for f in formas(juego, presupuesto, n)
+               if f[0] >= len(fijos)]
+    for r in range(reinicios * len(salidas)):
+        base = salidas[r % len(salidas)]
         b = list(base)
-        if r:  # perturbar el punto de partida
-            for i in rng.sample(range(n), 3):
+        if r >= len(salidas):  # perturbar el punto de partida
+            for i in rng.sample([k for k in range(n) if k not in fijos], 3):
                 cand = [o for o in OPC if len(o) == len(b[i])]
                 b[i] = rng.choice(cand)
             if not valido(b, juego, presupuesto):
@@ -135,15 +142,19 @@ def mejor_por_valor(P, Q, N, juego, presupuesto, piso_prob=0.0, semilla=7, reini
                         if nv > v + 1e-15:
                             b, v, mejora = nb, nv, True
             for i, j in combinations(range(n), 2):  # mover un doble/triple de partido
-                if len(b[i]) == len(b[j]):
+                li, lj = len(b[i]), len(b[j])
+                if li == lj:
                     continue
-                for oi in (o for o in OPC if len(o) == len(b[j])):
-                    for oj in (o for o in OPC if len(o) == len(b[i])):
-                        nb = list(b)
-                        nb[i], nb[j] = oi, oj
-                        nv = puntaje(nb)
-                        if nv > v + 1e-15:
-                            b, v, mejora = nb, nv, True
+                cands = [(oi, oj) for oi in OPC if len(oi) == lj for oj in OPC if len(oj) == li]
+                for oi, oj in cands:
+                    nb = list(b)
+                    nb[i], nb[j] = oi, oj
+                    if not valido(nb, juego, presupuesto):
+                        continue
+                    nv = puntaje(nb)
+                    if nv > v + 1e-15:
+                        b, v, mejora = nb, nv, True
+                        break
         if v > mejor_v:
             mejor, mejor_v = b, v
     return mejor
