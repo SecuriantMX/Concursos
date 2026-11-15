@@ -181,3 +181,91 @@ def resumen(boleto, P, juego, Q=None, N=None):
     if Q is not None and N is not None:
         r["valor_bolsa"] = valor_esperado(boleto, P, Q, N)
     return r
+
+
+def combos(boleto):
+    return set(product(*boleto))
+
+
+def p_alguno(boletos, P):
+    """Probabilidad de que al menos un boleto acierte todo: masa de la union de combinaciones."""
+    union = set()
+    for b in boletos:
+        union |= combos(b)
+    return sum(prod(P[i][o] for i, o in enumerate(c)) for c in union)
+
+
+def mejor_complemento(P, juego, presupuesto, previos, Q=None, N=None, triples_fijos=(), min_distintos=2,
+                      semilla=11, reinicios=12):
+    """
+    Boleto adicional para jugar junto con los de `previos`.
+
+    Si varios boletos repiten los mismos sencillos, caen juntos (paso en el
+    concurso 2359). Aqui el boleto nuevo se elige para sumar lo mas posible
+    con combinaciones que los anteriores NO cubren:
+      - sin Q/N: maximiza la probabilidad nueva de acertar todo;
+      - con Q y N: maximiza el valor esperado de bolsa de esas combinaciones nuevas.
+    Ademas debe llevar, en al menos `min_distintos` partidos, un pick que no
+    comparta ningun resultado con el de los boletos previos; asi un mismo
+    marcador no tumba a todos a la vez.
+    """
+    rng = random.Random(semilla)
+    n = len(P)
+    fijos = set(triples_fijos)
+    ya = set()
+    for b in previos:
+        ya |= combos(b)
+
+    def puntaje(b):
+        if any(len(b[i]) != 3 for i in fijos):
+            return -1.0
+        dist = sum(all(set(b[i]).isdisjoint(p[i]) for p in previos) for i in range(n))
+        if dist < min_distintos:
+            return -1.0 + dist / (10.0 * n)  # guia la busqueda hacia boletos que si cumplen
+        t = 0.0
+        for c in product(*b):
+            if c in ya:
+                continue
+            p = prod(P[i][o] for i, o in enumerate(c))
+            if Q is not None:
+                m = N * prod(Q[i][o] for i, o in enumerate(c))
+                p *= (1 - exp(-m)) / m if m > 1e-9 else 1.0
+            t += p
+        return t
+
+    salidas = [mejor_por_probabilidad(P, juego, presupuesto, f) for f in formas(juego, presupuesto, n)
+               if f[0] >= len(fijos)]
+    mejor, mejor_v = None, -1.0
+    for r in range(reinicios * len(salidas)):
+        b = list(salidas[r % len(salidas)])
+        libres = [k for k in range(n) if k not in fijos]
+        for i in rng.sample(libres, min(3, len(libres))):  # arrancar lejos de los boletos previos
+            b[i] = rng.choice([o for o in OPC if len(o) == len(b[i])])
+        v = puntaje(b)
+        mejora = True
+        while mejora:
+            mejora = False
+            for i in rng.sample(range(n), n):
+                for o in OPC:
+                    if o == b[i]:
+                        continue
+                    nb = b[:i] + [o] + b[i + 1:]
+                    if valido(nb, juego, presupuesto):
+                        nv = puntaje(nb)
+                        if nv > v + 1e-15:
+                            b, v, mejora = nb, nv, True
+            for i, j in combinations(range(n), 2):
+                li, lj = len(b[i]), len(b[j])
+                if li == lj:
+                    continue
+                for oi, oj in [(x, y) for x in OPC if len(x) == lj for y in OPC if len(y) == li]:
+                    nb = list(b)
+                    nb[i], nb[j] = oi, oj
+                    if valido(nb, juego, presupuesto):
+                        nv = puntaje(nb)
+                        if nv > v + 1e-15:
+                            b, v, mejora = nb, nv, True
+                            break
+        if v > mejor_v:
+            mejor, mejor_v = b, v
+    return mejor

@@ -18,14 +18,16 @@ Nota práctica: las páginas de resultados de temporada completa de betexplorer 
 
 ## Reglas vigentes
 
-Ninguna todavía.
+Ninguna estadística todavía.
+
+Decisión de diseño aprobada por el usuario el 2026-11-15, a partir de Media Semana 822: si se juegan varios boletos en un concurso, deben diferir en los sencillos más inciertos. Se arma con `boletos.mejor_complemento`, que busca combinaciones que los boletos anteriores no cubren y exige al menos 2 partidos con picks sin traslape. No es una regla sobre probabilidades; es sobre cómo repartir el riesgo entre boletos.
 
 ## Observaciones (candidatas, sin confirmar)
 
 | Fecha | Concurso | Observación | Veces vista |
 |---|---|---|---|
 | 2026-11-14 | 2359 | Amistoso de selecciones en sede neutral (Japón 3-2 Brasil): cayó el favorito del mercado, del Elo y del público. Brasil llegó sin jugadores de Flamengo ni Palmeiras y con cinco debutantes. Pregunta abierta: ¿en amistosos el mercado sobrevalora al favorito con plantel recortado? | 1 |
-| 2026-11-15 | 2359 | Los tres boletos de Progol compartían el mismo pick sencillo en 8 de 14 partidos (P3, P4, P7, P8, P9, P10, P11, P13). Cuando fallaron P3, P11 y P13 cayeron los tres a la vez. No es un patrón estadístico sino de diseño: los boletos no estaban diversificados entre sí. Propuesta pendiente de decisión del usuario: si se juegan varios boletos, exigir que difieran en los sencillos más inciertos. | 1 |
+| 2026-11-15 | 2359 | Los tres boletos de Progol compartían el mismo pick sencillo en 8 de 14 partidos (P3, P4, P7, P8, P9, P10, P11, P13). Cuando fallaron P3, P11 y P13 cayeron los tres a la vez. No es un patrón estadístico sino de diseño: los boletos no estaban diversificados entre sí. Aprobado por el usuario el 15-nov; ver Reglas vigentes. | 1 |
 | 2026-11-15 | 2359 | Los picks contra el público del boleto agresivo (P1 local o empate, P5 empate) fallaron los dos: ganaron los que el público prefería. Dos casos no dicen nada sobre la estrategia; se sigue midiendo. | 1 |
 
 ## Bitácora
