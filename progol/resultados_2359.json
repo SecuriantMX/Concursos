@@ -1,10 +1,86 @@
 {
- "corte": "2026-11-14 11:15 CDMX",
+ "corte": "2026-11-15 08:00 CDMX",
  "nota": "Solo marcadores a 90 minutos mas compensacion, que es lo que cuenta para Progol.",
  "partidos": {
-  "P3": {"marcador": "3-2", "res": "L",
-         "fuente": "https://channelnewsasia.com/sport/japan-brazil-friendly-mizuho-blue-challenge-6551566",
-         "fuente2": "https://www.france24.com/es/minuto-a-minuto/20261114-brasil-vuelve-a-decepcionar-y-cae-contra-jap%C3%B3n-pese-a-dos-genialidades-de-vin%C3%ADcius",
-         "fecha": "2026-11-14"}
+  "P3": {
+   "marcador": "3-2",
+   "res": "L",
+   "fuente": "https://channelnewsasia.com/sport/japan-brazil-friendly-mizuho-blue-challenge-6551566",
+   "fuente2": "https://www.france24.com/es/minuto-a-minuto/20261114-brasil-vuelve-a-decepcionar-y-cae-contra-jap%C3%B3n-pese-a-dos-genialidades-de-vin%C3%ADcius",
+   "fecha": "2026-11-14"
+  },
+  "P1": {
+   "marcador": "0-1",
+   "res": "V",
+   "fuente": "https://www.betexplorer.com/football/mexico/liga-mx/results/",
+   "fecha": "2026-11-15"
+  },
+  "P2": {
+   "marcador": "1-0",
+   "res": "L",
+   "fuente": "https://www.tudn.com/futbol/new-york-red-bulls-vs-america-goles-resumen-resultado-partido-amistoso",
+   "fecha": "2026-11-15",
+   "nota": "TUDN: America cayo por la minima; el 1-0 exacto viene de una imagen de marcadores en Facebook, una sola fuente"
+  },
+  "P5": {
+   "marcador": "1-0",
+   "res": "L",
+   "fuente": "https://www.uefa.com/uefanationsleague/news/02ab-220e66a3c090-9304054ed1ca-1000--uefa-nations-league-matchday-5-highlights-round-up-denmar/",
+   "fecha": "2026-11-15"
+  },
+  "P11": {
+   "marcador": "0-0",
+   "res": "E",
+   "fuente": "https://www.betexplorer.com/football/brazil/serie-a/results/",
+   "fecha": "2026-11-15"
+  },
+  "P12": {
+   "marcador": "0-1",
+   "res": "V",
+   "fuente": "https://www.betexplorer.com/football/brazil/serie-b/results/",
+   "fecha": "2026-11-15"
+  },
+  "P13": {
+   "marcador": "3-0",
+   "res": "L",
+   "fuente": "https://www.betexplorer.com/football/brazil/serie-b/results/",
+   "fecha": "2026-11-15"
+  },
+  "P14": {
+   "marcador": "1-1",
+   "res": "E",
+   "fuente": "https://www.betexplorer.com/football/japan/j-league-cup/results/",
+   "fecha": "2026-11-15"
+  },
+  "R1": {
+   "marcador": "3-2",
+   "res": "L",
+   "fuente": "https://www.betexplorer.com/football/north-central-america/concacaf-nations-league/results/",
+   "fecha": "2026-11-15"
+  },
+  "R2": {
+   "marcador": "0-2",
+   "res": "V",
+   "fuente": "https://www.uefa.com/uefanationsleague/news/02ab-220e66a3c090-9304054ed1ca-1000--uefa-nations-league-matchday-5-highlights-round-up-denmar/",
+   "fecha": "2026-11-15"
+  },
+  "R3": {
+   "marcador": "3-1",
+   "res": "L",
+   "fuente": "https://www.uefa.com/uefanationsleague/news/02ab-220e66a3c090-9304054ed1ca-1000--uefa-nations-league-matchday-5-highlights-round-up-denmar/",
+   "fecha": "2026-11-15"
+  },
+  "R4": {
+   "marcador": "3-2",
+   "res": "L",
+   "fuente": "https://www.uefa.com/uefanationsleague/news/02ab-220e66a3c090-9304054ed1ca-1000--uefa-nations-league-matchday-5-highlights-round-up-denmar/",
+   "fecha": "2026-11-15"
+  },
+  "R7": {
+   "marcador": "3-2",
+   "res": "L",
+   "fuente": "https://www.betexplorer.com/football/japan/j-league-cup/results/",
+   "fecha": "2026-11-15"
+  }
  }
 }
