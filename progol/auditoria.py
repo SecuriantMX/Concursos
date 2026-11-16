@@ -16,6 +16,7 @@ import csv
 import glob
 import json
 import sys
+import warnings
 from math import log, sqrt
 
 LETRAS = "LEV"
@@ -37,18 +38,31 @@ def resultado(r):
     return LETRAS.index(res) if res in ("L", "E", "V") else None
 
 
+def leer(ruta):
+    with open(ruta) as fh:
+        return json.load(fh)
+
+
 def cargar(n):
-    sal = json.load(open(f"salida_{n}.json"))
-    res = json.load(open(f"resultados_{n}.json"))
+    sal = leer(f"salida_{n}.json")
+    res = leer(f"resultados_{n}.json")
     filas = []
+    ids = {f["id"] for f in sal["partidos"] + sal["partidos_rev"]}
+    ajenas = [k for k in res["partidos"] if k not in ids]
+    if ajenas:
+        warnings.warn(f"resultados_{n}.json trae claves que no son partidos de salida_{n}.json y no se cuentan: "
+                      + ", ".join(ajenas))
     for f in sal["partidos"] + sal["partidos_rev"]:
         r = res["partidos"].get(f["id"])
         k = resultado(r)
         if k is None:
+            # sin resultado todavia es normal; un resultado escrito que no es L, E o V es un error de captura
+            if isinstance(r, dict) and r.get("res") not in (None, ""):
+                warnings.warn(f"resultados_{n}.json: {f['id']} trae res={r.get('res')!r}; debe ser L, E o V. No se cuenta.")
             continue
         # el publico solo cuenta si es el porcentaje oficial; el relleno de 1/3 no es un dato
         pub = None
-        if f.get("publico_real", True):
+        if f.get("publico_real", True) and sum(f["publico"]) > 0:
             s = sum(f["publico"])
             pub = [x / s for x in f["publico"]]
         filas.append(dict(concurso=n, id=f["id"], local=f["local"], visita=f["visita"],
@@ -177,7 +191,8 @@ if __name__ == "__main__":
     print(f"Concurso {n}: {len(filas)} de {total} partidos con resultado (corte: {res.get('corte', '?')})")
     for f in filas:
         fav = favorito(f["final"])
-        mio = "sin favorito (sin estimacion)" if fav is None else f"favorito mio {LETRAS[fav]} ({f['final'][fav] * 100:.0f}%)"
+        motivo = "sin estimacion" if f["conf"] == "nula" else "empate en el maximo"
+        mio = f"sin favorito ({motivo})" if fav is None else f"favorito mio {LETRAS[fav]} ({f['final'][fav] * 100:.0f}%)"
         print(f"  {f['id']:4}{(f['local'] + ' - ' + f['visita'])[:34]:35}{f['marcador']:>5}  salio {LETRAS[f['res']]}"
               f"  le daba {f['final'][f['res']] * 100:4.1f}%  {mio}")
     if filas:

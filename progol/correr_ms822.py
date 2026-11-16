@@ -65,9 +65,10 @@ if __name__ == "__main__":
               f"{f[0]*100:5.1f}{f[1]*100:5.1f}{f[2]*100:5.1f}  {e['ic']*100:3.0f}  {e['conf']:5}  "
               + " ".join(f"{1/x:5.2f}" for x in f))
         pub = p.get("publico")
+        hay_pub = bool(pub) and sum(pub) > 0  # porcentajes oficiales de venta; en ceros o ausentes no son dato
         filas.append(dict(id=p["id"], local=p["local"], visita=p["visita"], p=f, ic=e["ic"], conf=e["conf"],
                           comp=e["comp"], pesos=e["pesos"], det=e["det"],
-                          publico=pub if pub else [100 / 3] * 3, publico_real=bool(pub),
+                          publico=pub if hay_pub else [100 / 3] * 3, publico_real=hay_pub,
                           entropia=M.entropia(f)))
 
     P = [f["p"] for f in filas]

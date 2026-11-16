@@ -104,13 +104,17 @@ def mejor_por_valor(P, Q, N, juego, presupuesto, piso_prob=0.0, triples_fijos=()
     """
     Busqueda local: maximiza el valor esperado de la bolsa de primer lugar
     sujeto a que la probabilidad de acertar todo no baje de piso_prob.
+    Devuelve None si no encuentra un boleto que cumpla el piso y los triples fijos.
     """
     rng = random.Random(semilla)
     n = len(P)
     fijos = set(triples_fijos)  # partidos sin estimacion: se cubren completos
 
     def puntaje(b):
-        if any(len(b[i]) != 3 for i in fijos) or prod(cobertura(b, P)) < piso_prob:
+        if any(len(b[i]) != 3 for i in fijos):
+            # guia de busqueda: cada triple fijo ya colocado acerca al boleto a ser valido
+            return -2.0 + sum(len(b[i]) == 3 for i in fijos) / (n + 1.0)
+        if prod(cobertura(b, P)) < piso_prob:
             return -1.0
         return valor_esperado(b, P, Q, N)
 
@@ -209,9 +213,10 @@ def mejor_complemento(P, juego, presupuesto, previos, Q=None, N=None, triples_fi
     comparta ningun resultado con el de los boletos previos; asi un mismo
     marcador no tumba a todos a la vez.
 
-    Devuelve None cuando ningun boleto valido cumple `min_distintos` (pasa
-    cuando los previos ya cubren los tres resultados en casi todos los
-    partidos). Quien llama decide si baja la exigencia o deja de agregar boletos.
+    Devuelve None cuando la busqueda no encuentra un boleto valido que cumpla
+    `min_distintos` (pasa cuando los previos ya cubren los tres resultados en
+    casi todos los partidos). Quien llama decide si baja la exigencia o deja
+    de agregar boletos.
     """
     rng = random.Random(semilla)
     n = len(P)
@@ -222,7 +227,8 @@ def mejor_complemento(P, juego, presupuesto, previos, Q=None, N=None, triples_fi
 
     def puntaje(b):
         if any(len(b[i]) != 3 for i in fijos):
-            return -1.0
+            # guia de busqueda: cada triple fijo ya colocado acerca al boleto a ser valido
+            return -2.0 + sum(len(b[i]) == 3 for i in fijos) / (n + 1.0)
         dist = sum(all(set(b[i]).isdisjoint(p[i]) for p in previos) for i in range(n))
         if dist < min_distintos:
             return -1.0 + dist / (10.0 * n)  # guia la busqueda hacia boletos que si cumplen

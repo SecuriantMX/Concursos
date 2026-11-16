@@ -109,3 +109,8 @@ Correcciones a cifras ya escritas en esta bitácora, concurso 2359:
 - Corte del 16-nov: en los 18 partidos con mercado el modelo tuvo log-loss 0.998 (no 1.003, que era sobre 19) contra 0.991 del mercado. La diferencia pareada, -0.007 ± 0.011, estaba bien. Acierto del favorito: modelo 10 de 18, mercado 11 de 18, público 10 de 19.
 - Corte del 15-nov: en los 12 partidos con mercado el modelo tuvo 1.038 (no 1.043, que era sobre 13).
 - Las conclusiones no cambian: la diferencia con el mercado sigue dentro del ruido.
+
+Segunda pasada, sobre las propias correcciones: otros dos revisores intentaron romperlas y recalcularon aparte el boleto de Media Semana 822. No hallaron ningún número equivocado ni regresión; `historial.csv` quedó idéntico byte a byte. Sí dejaron nueve hallazgos menores, todos atendidos:
+- Cinco eran pruebas que no detectaban lo que decían probar. `pruebas.py` ahora afirma valores concretos (Shin contra un valor resuelto aparte, Elo hasta 600 puntos, aciertos de favorito, Brier a mano, Revancha, auditoría del 2359) y detecta 24 regresiones sembradas a propósito.
+- `auditoria.py` avisa cuando un resultado está mal capturado o su clave no es un partido de la salida, en vez de ignorarlo en silencio; un público en ceros se trata como dato faltante; la etiqueta "sin favorito" distingue entre partido sin estimación y empate en el máximo.
+- `boletos.py`: la búsqueda ya encuentra boleto cuando los triples obligados no coinciden con los partidos más parejos (antes devolvía None). No afectaba a ningún boleto entregado.
