@@ -1,5 +1,5 @@
 {
- "corte": "2026-11-15 08:00 CDMX",
+ "corte": "2026-11-16 07:50 CDMX",
  "nota": "Solo marcadores a 90 minutos mas compensacion, que es lo que cuenta para Progol.",
  "partidos": {
   "P3": {
@@ -81,6 +81,42 @@
    "res": "L",
    "fuente": "https://www.betexplorer.com/football/japan/j-league-cup/results/",
    "fecha": "2026-11-15"
+  },
+  "P4": {
+   "marcador": "2-0",
+   "res": "L",
+   "fuente": "https://www.clarosports.com/futbol/concacaf-nations-league/panama-vs-curazao-en-vivo-goles-y-resultados-del-partido-de-la-concacaf-nations-league-2026-hoy-domingo-15-de-noviembre/",
+   "fecha": "2026-11-16"
+  },
+  "P6": {
+   "marcador": "1-4",
+   "res": "V",
+   "fuente": "https://www.uefa.com/uefanationsleague/news/02ab-22146db70e40-12d581ab82a9-1000--uefa-nations-league-matchday-6-highlights-belgium-france/",
+   "fecha": "2026-11-16"
+  },
+  "P7": {
+   "marcador": "4-1",
+   "res": "L",
+   "fuente": "https://www.uefa.com/uefanationsleague/news/02ab-22146db70e40-12d581ab82a9-1000--uefa-nations-league-matchday-6-highlights-belgium-france/",
+   "fecha": "2026-11-16"
+  },
+  "P8": {
+   "marcador": "2-3",
+   "res": "V",
+   "fuente": "https://www.uefa.com/uefanationsleague/news/02ab-22146db70e40-12d581ab82a9-1000--uefa-nations-league-matchday-6-highlights-belgium-france/",
+   "fecha": "2026-11-16"
+  },
+  "R5": {
+   "marcador": "0-0",
+   "res": "E",
+   "fuente": "https://www.uefa.com/uefanationsleague/news/02ab-22146db70e40-12d581ab82a9-1000--uefa-nations-league-matchday-6-highlights-belgium-france/",
+   "fecha": "2026-11-16"
+  },
+  "R6": {
+   "marcador": "2-1",
+   "res": "L",
+   "fuente": "https://www.uefa.com/uefanationsleague/news/02ab-22146db70e40-12d581ab82a9-1000--uefa-nations-league-matchday-6-highlights-belgium-france/",
+   "fecha": "2026-11-16"
   }
  }
 }

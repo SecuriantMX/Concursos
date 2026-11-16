@@ -29,6 +29,7 @@ Decisión de diseño aprobada por el usuario el 2026-11-15, a partir de Media Se
 | 2026-11-14 | 2359 | Amistoso de selecciones en sede neutral (Japón 3-2 Brasil): cayó el favorito del mercado, del Elo y del público. Brasil llegó sin jugadores de Flamengo ni Palmeiras y con cinco debutantes. Pregunta abierta: ¿en amistosos el mercado sobrevalora al favorito con plantel recortado? | 1 |
 | 2026-11-15 | 2359 | Los tres boletos de Progol compartían el mismo pick sencillo en 8 de 14 partidos (P3, P4, P7, P8, P9, P10, P11, P13). Cuando fallaron P3, P11 y P13 cayeron los tres a la vez. No es un patrón estadístico sino de diseño: los boletos no estaban diversificados entre sí. Aprobado por el usuario el 15-nov; ver Reglas vigentes. | 1 |
 | 2026-11-15 | 2359 | Los picks contra el público del boleto agresivo (P1 local o empate, P5 empate) fallaron los dos: ganaron los que el público prefería. Dos casos no dicen nada sobre la estrategia; se sigue midiendo. | 1 |
+| 2026-11-16 | 2359 | Con 19 partidos, el porcentaje de venta del público tuvo mejor log-loss (0.961) que el mercado (0.991) y que el modelo (1.003). Un concurso no basta; si se repite en tres, probar el público como tercer estimador de la mezcla. | 1 |
 
 ## Bitácora
 
@@ -62,3 +63,22 @@ Qué falló:
 Qué funcionó: el triple en P2 y P12 cubrió dos resultados que no eran el más probable; R3, R4 y R7 salieron con el favorito.
 
 Pesos: sin cambio (6 partidos con mercado y Elo en el historial, mínimo 60).
+
+### 2026-11-16, concurso 2359, corte 07:50 CDMX (19 de 21 partidos)
+
+Resultados nuevos (6): P4 Panamá 2-0 Curazao (L), P6 Chipre 1-4 Montenegro (V), P7 Bélgica 4-1 Italia (L), P8 España 2-3 Inglaterra (V), R5 Letonia 0-0 Armenia (E), R6 Croacia 2-1 Chequia (L). Faltan P9 y P10 (lunes).
+
+| Boleto | Progol (12 jugados) | Máximo posible | Revancha (final, 7) |
+|---|---|---|---|
+| Conservador | 7 | 9 | 6 |
+| Balanceado | 6 | 8 | 4 |
+| Agresivo | 5 | 7 | 4 |
+
+Ningún boleto de Progol puede llegar a 10 aciertos, que fue el último nivel premiado en el 2358. La Revancha quedó en 6 de 7 para el conservador; solo cobra si nadie hizo 7 (premios aún no publicados).
+
+Modelo contra mercado (18 partidos): log-loss 1.003 contra 0.991, diferencia -0.007 ± 0.011, dentro del ruido. Público 0.961: sigue por delante de ambos en este concurso. Acierto del favorito: modelo 11 de 19, público 10 de 19.
+
+Qué falló hoy: P8, España era favorita con 60% y perdió en casa; iba sencilla en los tres boletos. R5, el empate (28%) quedó fuera del doble L/V de dos boletos.
+Qué funcionó: P4, P6 y P7 con el favorito; R6 Croacia.
+
+Pesos: sin cambio (12 partidos con mercado y Elo, mínimo 60).
