@@ -26,6 +26,11 @@ Limpieza de filas:
 Elo: eloratings.net/World.tsv, leido el 16-nov-2026 a las 14:00 CDMX.
 xG: se guarda con el numero de partidos de la muestra (xg_n). El Poisson solo entra
 cuando cada equipo tiene al menos MIN_XG partidos en su corte de casa o de visita.
+  M6-M8  footystats.org, Serie A 2026, columnas At Home / At Away, 17 partidos por lado
+         (leido y vuelto a comprobar en vivo el 16-nov). statz.ai da otros valores
+         (M6: 1.66/0.89 y 1.17/1.15; M7: 1.29/0.87 y 1.04/1.68); con ellos el boleto no cambia.
+  M9     American Soccer Analysis, temporada regular de la MLS 2026, 17 partidos por lado.
+         El partido es de playoffs: misma liga, otra fase.
 
 Porcentajes de venta del publico del 822: NO ENCONTRADOS (la pagina oficial seguia
 con la imagen del 821 a las 13:04 CDMX). Bolsa del 822: NO ENCONTRADA.
@@ -103,6 +108,7 @@ PARTIDOS = [
              [2.10, 3.25, 3.60, "BetWay"],
          ]),
     dict(id="M6", local="Cruzeiro", visita="Palmeiras", tipo="club", neutral=False,
+         xg=(1.77, 1.15, 1.49, 1.66), xg_n=(17, 17),
          momios=[
              [2.78, 3.41, 2.55, "Pinnacle"],
              [2.81, 3.46, 2.52, "1xBet"],
@@ -119,6 +125,7 @@ PARTIDOS = [
              [2.78, 3.42, 2.49, "Melbet"],
          ]),
     dict(id="M7", local="Corinthians", visita="Botafogo", tipo="club", neutral=False,
+         xg=(1.66, 1.00, 1.38, 1.71), xg_n=(17, 17),
          momios=[
              [1.81, 3.81, 4.26, "Pinnacle"],
              [1.86, 3.75, 4.22, "1xBet"],
@@ -134,6 +141,7 @@ PARTIDOS = [
              [1.80, 3.70, 4.20, "DraftKings"],
          ]),
     dict(id="M8", local="Sao Paulo", visita="Fluminense", tipo="club", neutral=False,
+         xg=(1.66, 1.17, 1.40, 1.66), xg_n=(17, 17),
          momios=[
              [2.42, 3.27, 3.07, "Pinnacle"],
              [2.34, 3.28, 3.22, "1xBet"],
@@ -147,6 +155,7 @@ PARTIDOS = [
              [2.30, 3.25, 3.10, "BetMGM.us"],
          ]),
     dict(id="M9", local="Orlando", visita="Cincinnati", tipo="club", neutral=False,
+         xg=(1.86, 1.87, 1.60, 1.95), xg_n=(17, 17),
          momios=[
              [2.50, 3.90, 2.45, "bet365.us"],
              [2.37, 4.00, 2.45, "BetMGM.us"],

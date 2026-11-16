@@ -208,6 +208,10 @@ def mejor_complemento(P, juego, presupuesto, previos, Q=None, N=None, triples_fi
     Ademas debe llevar, en al menos `min_distintos` partidos, un pick que no
     comparta ningun resultado con el de los boletos previos; asi un mismo
     marcador no tumba a todos a la vez.
+
+    Devuelve None cuando ningun boleto valido cumple `min_distintos` (pasa
+    cuando los previos ya cubren los tres resultados en casi todos los
+    partidos). Quien llama decide si baja la exigencia o deja de agregar boletos.
     """
     rng = random.Random(semilla)
     n = len(P)
@@ -266,6 +270,7 @@ def mejor_complemento(P, juego, presupuesto, previos, Q=None, N=None, triples_fi
                         if nv > v + 1e-15:
                             b, v, mejora = nb, nv, True
                             break
-        if v > mejor_v:
+        # los puntajes negativos son solo la guia de busqueda: ese boleto no cumple min_distintos
+        if v >= 0 and v > mejor_v:
             mejor, mejor_v = b, v
     return mejor

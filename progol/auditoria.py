@@ -31,37 +31,64 @@ def logloss(p, r):
     return -log(max(p[r], EPS))
 
 
+def resultado(r):
+    """Indice 0, 1 o 2 del resultado; None si el partido no trae exactamente L, E o V."""
+    res = r.get("res") if isinstance(r, dict) else None
+    return LETRAS.index(res) if res in ("L", "E", "V") else None
+
+
 def cargar(n):
     sal = json.load(open(f"salida_{n}.json"))
     res = json.load(open(f"resultados_{n}.json"))
     filas = []
     for f in sal["partidos"] + sal["partidos_rev"]:
         r = res["partidos"].get(f["id"])
-        if not r or r.get("res") not in LETRAS:
+        k = resultado(r)
+        if k is None:
             continue
-        pub = [x / 100 for x in f["publico"]]
-        s = sum(pub)
+        # el publico solo cuenta si es el porcentaje oficial; el relleno de 1/3 no es un dato
+        pub = None
+        if f.get("publico_real", True):
+            s = sum(f["publico"])
+            pub = [x / s for x in f["publico"]]
         filas.append(dict(concurso=n, id=f["id"], local=f["local"], visita=f["visita"],
-                          res=LETRAS.index(r["res"]), marcador=r["marcador"], conf=f["conf"],
+                          res=k, marcador=r["marcador"], conf=f["conf"],
                           final=f["p"], mercado=f["comp"].get("mercado"), elo=f["comp"].get("elo"),
-                          poisson=f["comp"].get("poisson"), publico=[x / s for x in pub]))
+                          poisson=f["comp"].get("poisson"), publico=pub))
     return sal, res, filas
+
+
+def favorito(p):
+    """Indice del resultado mas probable, o None si hay empate en el maximo (no hay favorito)."""
+    m = max(p)
+    idx = [i for i in range(3) if m - p[i] < 1e-9]
+    return idx[0] if len(idx) == 1 else None
 
 
 def tabla_estimadores(filas, titulo):
     print(f"\n{titulo}")
     print(f"  {'estimador':10}{'n':>4}{'Brier':>9}{'log-loss':>10}{'acierto del favorito':>23}")
     out = {}
-    for est in ("final", "mercado", "elo", "poisson", "publico"):
-        fs = [f for f in filas if f[est] is not None]
+    con_mercado = [f for f in filas if f["mercado"] is not None]
+    renglones = [("final", "final", filas)]
+    if 0 < len(con_mercado) < len(filas):
+        # mismo conjunto que el mercado: asi los dos renglones si se pueden restar
+        renglones.append(("final*", "final", con_mercado))
+    renglones += [(e, e, filas) for e in ("mercado", "elo", "poisson", "publico")]
+    for nombre, est, base in renglones:
+        fs = [f for f in base if f[est] is not None]
         if not fs:
             continue
         b = sum(brier(f[est], f["res"]) for f in fs) / len(fs)
         ll = sum(logloss(f[est], f["res"]) for f in fs) / len(fs)
-        fav = sum(max(range(3), key=lambda i: f[est][i]) == f["res"] for f in fs)
-        print(f"  {est:10}{len(fs):4}{b:9.3f}{ll:10.3f}{fav:>14} de {len(fs)}")
-        out[est] = dict(n=len(fs), brier=b, logloss=ll, favorito=fav)
+        con_fav = [f for f in fs if favorito(f[est]) is not None]
+        fav = sum(favorito(f[est]) == f["res"] for f in con_fav)
+        print(f"  {nombre:10}{len(fs):4}{b:9.3f}{ll:10.3f}{fav:>14} de {len(con_fav)}")
+        out[nombre] = dict(n=len(fs), brier=b, logloss=ll, favorito=fav, con_favorito=len(con_fav))
     print(f"  {'al azar':10}{'':4}{2/3:9.3f}{log(3):10.3f}")
+    if 0 < len(con_mercado) < len(filas):
+        print("  final* = modelo final solo en los partidos que tienen mercado. El favorito no cuenta"
+              " donde el estimador empata en el maximo.")
     return out
 
 
@@ -78,19 +105,22 @@ def cara_a_cara(filas):
 
 def aciertos_boletos(sal, res):
     print("\nBoletos (aciertos sobre partidos ya jugados)")
-    for juego, pref in (("progol", "P"), ("revancha", "R")):
+    for juego, lista in (("progol", sal["partidos"]), ("revancha", sal["partidos_rev"])):
+        ids = [f["id"] for f in lista]
         for nombre, b in sal[juego].items():
+            if len(b["picks"]) != len(ids):
+                raise ValueError(f"el boleto {juego}/{nombre} trae {len(b['picks'])} picks para {len(ids)} partidos")
             ok = jug = 0
             fallos = []
-            for i, pick in enumerate(b["picks"], 1):
-                r = res["partidos"].get(f"{pref}{i}")
-                if not r or r.get("res") not in LETRAS:
+            for pid, pick in zip(ids, b["picks"]):
+                k = resultado(res["partidos"].get(pid))
+                if k is None:
                     continue
                 jug += 1
-                if r["res"] in pick:
+                if LETRAS[k] in pick:
                     ok += 1
                 else:
-                    fallos.append(f"{pref}{i} (puse {pick}, salio {r['res']})")
+                    fallos.append(f"{pid} (puse {pick}, salio {LETRAS[k]})")
             print(f"  {juego:9}{nombre:14} {ok} de {jug} jugados; faltan {len(b['picks']) - jug}."
                   + (f"  Fallos: {', '.join(fallos)}" if fallos else ""))
 
@@ -146,9 +176,10 @@ if __name__ == "__main__":
     total = len(sal["partidos"]) + len(sal["partidos_rev"])
     print(f"Concurso {n}: {len(filas)} de {total} partidos con resultado (corte: {res.get('corte', '?')})")
     for f in filas:
-        fav = max(range(3), key=lambda i: f["final"][i])
+        fav = favorito(f["final"])
+        mio = "sin favorito (sin estimacion)" if fav is None else f"favorito mio {LETRAS[fav]} ({f['final'][fav] * 100:.0f}%)"
         print(f"  {f['id']:4}{(f['local'] + ' - ' + f['visita'])[:34]:35}{f['marcador']:>5}  salio {LETRAS[f['res']]}"
-              f"  le daba {f['final'][f['res']] * 100:4.1f}%  favorito mio {LETRAS[fav]} ({f['final'][fav] * 100:.0f}%)")
+              f"  le daba {f['final'][f['res']] * 100:4.1f}%  {mio}")
     if filas:
         tabla_estimadores(filas, "Este concurso")
         c = cara_a_cara(filas)

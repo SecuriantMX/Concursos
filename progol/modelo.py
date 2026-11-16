@@ -15,6 +15,7 @@ Referencias:
     inefficiencies in the football betting market", Applied Statistics 46.
   Elo para selecciones: formula publicada en eloratings.net (+100 de local).
 """
+import warnings
 from math import exp, factorial, log, sqrt
 
 MAXG = 10  # goles maximos por equipo en la rejilla de marcadores
@@ -131,10 +132,16 @@ def elo_1x2(elo_l, elo_v, bono_local=100.0, goles_totales=2.6, rho=-0.10):
     """
     Elo da el marcador esperado We = P(gana) + 0.5 P(empata), no el empate.
     Se busca el reparto de goles (total fijo) cuyo Poisson reproduce ese We.
+
+    Devuelve (probabilidades, We que esas probabilidades reproducen). Con el
+    total de goles fijo el empate nunca baja de P(0-0), asi que We no pasa de
+    1 - 0.5*exp(-total): unos 600 puntos de diferencia con 2.81 goles. Mas
+    alla de eso no hay solucion; se devuelve la del borde con su We real y se
+    avisa, para que el dato no pase como si fuera el de Elo.
     """
     we = elo_esperado(elo_l, elo_v, bono_local)
-    lo, hi = 0.02, 0.98  # fraccion de los goles que anota el local
-    for _ in range(60):
+    lo, hi = 1e-9, 1 - 1e-9  # fraccion de los goles que anota el local
+    for _ in range(80):
         mid = (lo + hi) / 2
         p = p1x2(goles_totales * mid, goles_totales * (1 - mid), rho)
         if p[0] + 0.5 * p[1] < we:
@@ -142,7 +149,12 @@ def elo_1x2(elo_l, elo_v, bono_local=100.0, goles_totales=2.6, rho=-0.10):
         else:
             hi = mid
     f = (lo + hi) / 2
-    return p1x2(goles_totales * f, goles_totales * (1 - f), rho), we
+    p = p1x2(goles_totales * f, goles_totales * (1 - f), rho)
+    logrado = p[0] + 0.5 * p[1]
+    if abs(logrado - we) > 1e-6:
+        warnings.warn(f"Elo pide We={we:.4f} y con {goles_totales} goles solo se alcanza {logrado:.4f}; "
+                      "la diferencia de rating es demasiado grande para este total de goles")
+    return p, logrado
 
 
 # ---------------------------------------------------------------- mezcla

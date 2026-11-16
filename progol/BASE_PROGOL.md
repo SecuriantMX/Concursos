@@ -8,6 +8,13 @@ Bitácora de lo que el modelo propuso contra lo que pasó. Se actualiza con cada
 2. Correr `python3 auditoria.py <concurso>`. Calcula Brier y log-loss del modelo final, del mercado, del Elo, del Poisson y del público, cuenta aciertos por boleto y reescribe `historial.csv`.
 3. Anotar aquí lo observado.
 
+Cómo leer la tabla de `auditoria.py`:
+- `final` es el modelo en todos los partidos jugados; `final*` es el modelo solo en los partidos que tienen mercado. Para comparar contra el mercado se usa `final*` o la línea "Modelo final contra mercado", que es pareada.
+- El "acierto del favorito" no cuenta los partidos donde el estimador empata en el máximo (por ejemplo, un partido sin estimación con 1/3 para cada resultado).
+- El público solo se califica cuando el porcentaje es el oficial de Lotería Nacional. Si no se publicó, queda vacío en `historial.csv`.
+- Los aciertos de cada boleto se cuentan con los ids de la salida, así que sirve igual para Progol (P, R) y para Media Semana (M).
+- `python3 pruebas.py` corre las pruebas del modelo, del armado y de la auditoría. Deben pasar antes de cada commit que toque código.
+
 Nota práctica: las páginas de resultados de temporada completa de betexplorer son enormes. Para marcadores conviene la nota de resumen de la jornada (UEFA, medios) o una búsqueda por partido.
 
 ## Cuándo se cambia un valor del modelo
@@ -19,6 +26,8 @@ Nota práctica: las páginas de resultados de temporada completa de betexplorer 
 ## Reglas vigentes
 
 Ninguna estadística todavía.
+
+Decisión de diseño del 2026-11-16: el xG solo entra al Poisson de clubes cuando cada equipo tiene al menos 8 partidos en su corte (casa para el local, visita para el visitante) de la misma liga. Con menos, el partido se queda con el mercado. No sale de resultados; es para no meter al modelo muestras de 2 partidos.
 
 Decisión de diseño aprobada por el usuario el 2026-11-15, a partir de Media Semana 822: si se juegan varios boletos en un concurso, deben diferir en los sencillos más inciertos. Se arma con `boletos.mejor_complemento`, que busca combinaciones que los boletos anteriores no cubren y exige al menos 2 partidos con picks sin traslape. No es una regla sobre probabilidades; es sobre cómo repartir el riesgo entre boletos.
 
@@ -82,3 +91,21 @@ Qué falló hoy: P8, España era favorita con 60% y perdió en casa; iba sencill
 Qué funcionó: P4, P6 y P7 con el favorito; R6 Croacia.
 
 Pesos: sin cambio (12 partidos con mercado y Elo, mínimo 60).
+
+### 2026-11-16, revisión del código (sin resultados nuevos)
+
+Dos revisores leyeron `modelo.py`, `boletos.py` y `auditoria.py`, y un segundo agente intentó refutar cada hallazgo. Quedaron seis defectos confirmados, ya corregidos. Ninguno cambiaba un boleto entregado.
+
+| Archivo | Defecto | Efecto |
+|---|---|---|
+| `auditoria.py` | El renglón `final` incluía a P2 (sin momios, 1/3 parejo) y lo contaba como favorito acertado porque ganó el local | Cifras de la bitácora infladas, ver abajo |
+| `auditoria.py` | Buscaba resultados con prefijos fijos P y R | El boleto de Media Semana (M1 a M9) habría salido con 0 aciertos |
+| `auditoria.py` | Calificaba como "público" el relleno de 33/33/33 | Habría ensuciado la observación abierta sobre el público |
+| `auditoria.py` | Un resultado vacío o mal escrito contaba como victoria local | Latente |
+| `boletos.py` | `mejor_complemento` devolvía un boleto que no cumplía la separación mínima cuando no había ninguno válido | Latente (hoy nadie la llama) |
+| `modelo.py` | `elo_1x2` se pegaba al borde con más de 558 puntos de diferencia de rating | Latente (el máximo usado es 363) |
+
+Correcciones a cifras ya escritas en esta bitácora, concurso 2359:
+- Corte del 16-nov: en los 18 partidos con mercado el modelo tuvo log-loss 0.998 (no 1.003, que era sobre 19) contra 0.991 del mercado. La diferencia pareada, -0.007 ± 0.011, estaba bien. Acierto del favorito: modelo 10 de 18, mercado 11 de 18, público 10 de 19.
+- Corte del 15-nov: en los 12 partidos con mercado el modelo tuvo 1.038 (no 1.043, que era sobre 13).
+- Las conclusiones no cambian: la diferencia con el mercado sigue dentro del ruido.
