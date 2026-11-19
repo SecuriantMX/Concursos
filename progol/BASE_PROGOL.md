@@ -2,6 +2,10 @@
 
 Bitácora de lo que el modelo propuso contra lo que pasó. Se actualiza con cada auditoría diaria.
 
+## Límite de consumo
+
+Fijado por el usuario el 2026-11-19: como máximo 5% de su cuota de uso por día. El medidor no se puede ver desde la sesión, así que se trabaja en modo ligero por omisión: sin flujos de agentes ni subagentes, pocas búsquedas web (seis en la auditoría diaria) y respuestas cortas. Un trabajo grande, como armar una quiniela con investigación completa, se avisa antes con su costo aproximado y se hace solo si el usuario lo pide.
+
 ## Cómo se audita
 
 1. Buscar en la web los marcadores de los partidos ya jugados y guardarlos con fuente en `resultados_<concurso>.json`. Cuenta el marcador a 90 minutos más compensación.
