@@ -1,0 +1,48 @@
+{
+ "corte": "2026-11-19 07:55 CDMX",
+ "nota": "Solo marcadores a 90 minutos mas compensacion. Faltan M2, M8 y M9, que se juegan el jueves 19-nov. M1 no tuvo tiempo extra: el global quedo 3-3 y Mexico avanzo por goles de visitante.",
+ "partidos": {
+  "M1": {
+   "marcador": "1-0",
+   "res": "L",
+   "fecha": "2026-11-19",
+   "fuente": "https://www.espn.com/soccer/story/_/id/50517553/mexico-survive-jamaica-scare-give-marquez-first-win",
+   "fuente2": "https://www.elfinanciero.com.mx/deportes/2026/11/17/mexico-vs-jamaica-en-vivo-resultado-cuartos-de-final-vuelta-nations-league/"
+  },
+  "M3": {
+   "marcador": "2-3",
+   "res": "V",
+   "fecha": "2026-11-19",
+   "fuente": "https://es.uefa.com/uefanationsleague/news/02a2-1fea1edbc9a9-78c6728d4928-1000--uefa-nations-league-2026-27-todos-los-resultados-de-la-fase/",
+   "fuente2": "https://es-us.noticias.yahoo.com/uefa-nations-league-calendario-partidos-223522453.html"
+  },
+  "M4": {
+   "marcador": "1-1",
+   "res": "E",
+   "fecha": "2026-11-19",
+   "fuente": "https://es.uefa.com/uefanationsleague/news/02a2-1fea1edbc9a9-78c6728d4928-1000--uefa-nations-league-2026-27-todos-los-resultados-de-la-fase/",
+   "fuente2": "https://es-us.noticias.yahoo.com/uefa-nations-league-calendario-partidos-223522453.html"
+  },
+  "M5": {
+   "marcador": "3-0",
+   "res": "L",
+   "fecha": "2026-11-19",
+   "fuente": "https://es.uefa.com/uefanationsleague/news/02a2-1fea1edbc9a9-78c6728d4928-1000--uefa-nations-league-2026-27-todos-los-resultados-de-la-fase/",
+   "fuente2": "https://es-us.noticias.yahoo.com/uefa-nations-league-calendario-partidos-223522453.html"
+  },
+  "M6": {
+   "marcador": "2-1",
+   "res": "L",
+   "fecha": "2026-11-19",
+   "fuente": "https://ge.globo.com/mg/futebol/brasileirao-serie-a/jogo/18-11-2026/cruzeiro-palmeiras.ghtml",
+   "fuente2": "https://www.espn.com.br/futebol/partida/_/jogoId/401841314/palmeiras-cruzeiro"
+  },
+  "M7": {
+   "marcador": "4-0",
+   "res": "L",
+   "fecha": "2026-11-19",
+   "fuente": "https://ge.globo.com/sp/futebol/brasileirao-serie-a/jogo/18-11-2026/corinthians-botafogo.ghtml",
+   "fuente2": "https://www.terra.com.br/esportes/futebol/brasileiro-serie-a/ao-vivo/corinthians-x-botafogo/98037/"
+  }
+ }
+}
