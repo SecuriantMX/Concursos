@@ -1,6 +1,6 @@
 {
- "corte": "2026-11-16 07:50 CDMX",
- "nota": "Solo marcadores a 90 minutos mas compensacion, que es lo que cuenta para Progol.",
+ "corte": "2026-11-17 07:55 CDMX",
+ "nota": "Solo marcadores a 90 minutos mas compensacion, que es lo que cuenta para Progol. Concurso cerrado: las 21 letras coinciden con la combinacion oficial de Loteria Nacional (Progol V L L L L V L V L L E V L E; Revancha L V L L E L L), leida el 17-nov-2026 en loterianacional.gob.mx/Progol/Resultados y en la mascarilla oficial del 16-nov.",
  "partidos": {
   "P3": {
    "marcador": "3-2",
@@ -117,6 +117,67 @@
    "res": "L",
    "fuente": "https://www.uefa.com/uefanationsleague/news/02ab-22146db70e40-12d581ab82a9-1000--uefa-nations-league-matchday-6-highlights-belgium-france/",
    "fecha": "2026-11-16"
+  },
+  "P9": {
+   "marcador": "1-0",
+   "res": "L",
+   "fuente": "https://es.uefa.com/uefanationsleague/news/02ab-22146656be17-4c92792e2b24-1000--resumen-y-videos-de-la-jornada-6-de-la-uefa-nations-league-a/",
+   "fuente2": "https://www.fmf.md/noutate/19462/insulele-feroemoldova-10",
+   "fecha": "2026-11-17"
+  },
+  "P10": {
+   "marcador": "5-0",
+   "res": "L",
+   "fuente": "https://es.uefa.com/uefanationsleague/news/02ab-22146656be17-4c92792e2b24-1000--resumen-y-videos-de-la-jornada-6-de-la-uefa-nations-league-a/",
+   "fuente2": "https://www.espn.com/soccer/match/_/gameId/401861185",
+   "fecha": "2026-11-17"
   }
+ },
+ "oficial": {
+  "combinacion_progol": "V L L L L V L V L L E V L E",
+  "combinacion_revancha": "L V L L E L L",
+  "premios_progol": [
+   [
+    14,
+    1,
+    9028361.25
+   ],
+   [
+    13,
+    16,
+    87208.87
+   ],
+   [
+    12,
+    231,
+    5285.38
+   ],
+   [
+    11,
+    1991,
+    613.22
+   ],
+   [
+    10,
+    11306,
+    123.41
+   ]
+  ],
+  "premios_revancha": [
+   [
+    7,
+    3748,
+    859.54
+   ]
+  ],
+  "columnas_premios": [
+   "aciertos",
+   "quinielas ganadoras",
+   "premio por quiniela sencilla"
+  ],
+  "bolsa_siguiente_progol": 5000000,
+  "fuente": "https://www.loterianacional.gob.mx/Documentos/juegos/Concursosysorteos/Mascarillas/resultados%202026-11-16.pdf",
+  "fuente2": "https://www.loterianacional.gob.mx/Progol/Resultados",
+  "leido": "2026-11-17 07:50 CDMX"
  }
 }

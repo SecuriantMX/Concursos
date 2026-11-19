@@ -236,7 +236,7 @@ def prueba_auditoria_boletos():
 
 
 def prueba_auditoria_2359():
-    """La auditoria del 2359 con los archivos del repositorio da las cifras anotadas en la bitacora."""
+    """La auditoria final del 2359 (21 partidos, concurso cerrado) da las cifras anotadas en la bitacora."""
     tmp = tempfile.mkdtemp()
     antes = os.getcwd()
     try:
@@ -244,16 +244,19 @@ def prueba_auditoria_2359():
             shutil.copy(os.path.join(AQUI, nombre), tmp)
         os.chdir(tmp)
         sal, res, f = A.cargar("2359")
-        if res.get("corte") != "2026-11-16 07:50 CDMX":
-            return  # las cifras de abajo son de ese corte; con mas resultados ya no aplican
+        assert len(f) == 21
+        # las letras guardadas son las de la combinacion oficial de Loteria Nacional
+        ofi = res["oficial"]["combinacion_progol"].split() + res["oficial"]["combinacion_revancha"].split()
+        assert ["LEV"[x["res"]] for x in f] == ofi
         t, _ = callado(A.tabla_estimadores, f, "2359")
-        assert (t["final"]["n"], t["final*"]["n"], t["mercado"]["n"], t["publico"]["n"]) == (19, 18, 18, 19)
-        assert (t["final"]["favorito"], t["final"]["con_favorito"]) == (10, 18)
-        assert (t["mercado"]["favorito"], t["publico"]["favorito"]) == (11, 10)
-        assert cerca(t["final*"]["logloss"], 0.9975, 5e-4) and cerca(t["mercado"]["logloss"], 0.9908, 5e-4)
-        assert cerca(t["publico"]["logloss"], 0.9609, 5e-4)
+        assert (t["final"]["n"], t["final*"]["n"], t["mercado"]["n"], t["publico"]["n"]) == (21, 19, 19, 21)
+        assert (t["final"]["favorito"], t["final"]["con_favorito"]) == (12, 20)
+        assert (t["final*"]["favorito"], t["mercado"]["favorito"], t["publico"]["favorito"]) == (11, 12, 12)
+        assert cerca(t["final*"]["logloss"], 0.9825, 1e-4) and cerca(t["mercado"]["logloss"], 0.9727, 1e-4)
+        assert cerca(t["publico"]["logloss"], 0.9428, 1e-4) and cerca(t["final"]["brier"], 0.5637, 1e-4)
         _, txt = callado(A.aciertos_boletos, sal, res)
-        assert "conservador    7 de 12 jugados; faltan 2." in txt and "conservador    6 de 7 jugados; faltan 0." in txt
+        assert "conservador    9 de 14 jugados; faltan 0." in txt and "conservador    6 de 7 jugados; faltan 0." in txt
+        assert "agresivo       7 de 14 jugados; faltan 0." in txt
     finally:
         os.chdir(antes)
         shutil.rmtree(tmp)

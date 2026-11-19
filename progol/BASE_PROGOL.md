@@ -38,7 +38,7 @@ Decisión de diseño aprobada por el usuario el 2026-11-15, a partir de Media Se
 | 2026-11-14 | 2359 | Amistoso de selecciones en sede neutral (Japón 3-2 Brasil): cayó el favorito del mercado, del Elo y del público. Brasil llegó sin jugadores de Flamengo ni Palmeiras y con cinco debutantes. Pregunta abierta: ¿en amistosos el mercado sobrevalora al favorito con plantel recortado? | 1 |
 | 2026-11-15 | 2359 | Los tres boletos de Progol compartían el mismo pick sencillo en 8 de 14 partidos (P3, P4, P7, P8, P9, P10, P11, P13). Cuando fallaron P3, P11 y P13 cayeron los tres a la vez. No es un patrón estadístico sino de diseño: los boletos no estaban diversificados entre sí. Aprobado por el usuario el 15-nov; ver Reglas vigentes. | 1 |
 | 2026-11-15 | 2359 | Los picks contra el público del boleto agresivo (P1 local o empate, P5 empate) fallaron los dos: ganaron los que el público prefería. Dos casos no dicen nada sobre la estrategia; se sigue midiendo. | 1 |
-| 2026-11-16 | 2359 | Con 19 partidos, el porcentaje de venta del público tuvo mejor log-loss (0.961) que el mercado (0.991) y que el modelo (1.003). Un concurso no basta; si se repite en tres, probar el público como tercer estimador de la mezcla. | 1 |
+| 2026-11-17 | 2359 | Al cierre, en los 19 partidos con mercado, el porcentaje de venta del público tuvo mejor log-loss (0.931) que el mercado (0.973) y que el modelo (0.983). La ventaja pareada del público sobre el mercado es 0.041 ± 0.052: dentro del ruido. Un concurso no basta; si se repite en tres, probar el público como tercer estimador de la mezcla. | 1 |
 
 ## Bitácora
 
@@ -114,3 +114,43 @@ Segunda pasada, sobre las propias correcciones: otros dos revisores intentaron r
 - Cinco eran pruebas que no detectaban lo que decían probar. `pruebas.py` ahora afirma valores concretos (Shin contra un valor resuelto aparte, Elo hasta 600 puntos, aciertos de favorito, Brier a mano, Revancha, auditoría del 2359) y detecta 24 regresiones sembradas a propósito.
 - `auditoria.py` avisa cuando un resultado está mal capturado o su clave no es un partido de la salida, en vez de ignorarlo en silencio; un público en ceros se trata como dato faltante; la etiqueta "sin favorito" distingue entre partido sin estimación y empate en el máximo.
 - `boletos.py`: la búsqueda ya encuentra boleto cuando los triples obligados no coinciden con los partidos más parejos (antes devolvía None). No afectaba a ningún boleto entregado.
+
+### 2026-11-17, concurso 2359, cierre (21 de 21 partidos)
+
+Resultados nuevos (2): P9 Islas Feroe 1-0 Moldavia (L) y P10 Alemania 5-0 Países Bajos (L), cada uno con dos fuentes y confirmado por un segundo agente. Las 21 letras registradas coinciden con la combinación oficial de Lotería Nacional: Progol V L L L L V L V L L E V L E; Revancha L V L L E L L.
+
+| Boleto | Progol: aciertos (esperados) | Revancha: aciertos (esperados) | ¿Cobró? |
+|---|---|---|---|
+| Conservador | 9 de 14 (8.9) | 6 de 7 (5.5) | No |
+| Balanceado | 8 de 14 (8.7) | 4 de 7 (5.2) | No |
+| Agresivo, el recomendado | 7 de 14 (8.5) | 4 de 7 (5.2) | No |
+
+Premios oficiales (mascarilla del 16-nov, por quiniela sencilla):
+
+| Juego | Aciertos | Quinielas ganadoras | Premio |
+|---|---|---|---|
+| Progol | 14 | 1 | $9,028,361.25 |
+| Progol | 13 | 16 | $87,208.87 |
+| Progol | 12 | 231 | $5,285.38 |
+| Progol | 11 | 1,991 | $613.22 |
+| Progol | 10 | 11,306 | $123.41 |
+| Revancha | 7 | 3,748 | $859.54 |
+
+Ningún boleto cobró: Progol paga desde 10 aciertos y el mejor hizo 9; Revancha solo paga 7 y el mejor hizo 6. Bolsa garantizada del Progol 2360: 5 millones.
+
+Modelo contra mercado, en los 19 partidos con momios: log-loss 0.983 contra 0.973, diferencia pareada -0.010 ± 0.011; Brier 0.577 contra 0.572. Público en esos mismos 19: 0.931. Elo 0.951 y Poisson 0.923, los dos sobre 14 partidos. Acierto del favorito: modelo 11 de 19, mercado 12 de 19, público 12 de 21.
+
+Calibración del modelo en los 20 partidos con estimación (esperado ± una desviación):
+- Ganó el favorito en 12; se esperaban 10.4 ± 2.2.
+- Salió el resultado menos probable en 5; se esperaban 4.4 ± 1.8.
+- Hubo 3 empates; se esperaban 4.9 ± 1.9.
+Nada se sale de lo esperable.
+
+Qué falló:
+- P3, P8, P11 y P13 iban en sencillo y con el mismo pick en los tres boletos; fallaron los cuatro. P14 llevaba doble L/V y salió empate.
+- El agresivo quedó 1.5 aciertos por debajo de lo esperado: sus dos apuestas contra el público (P1 y P5) fallaron, además de las cinco casillas anteriores.
+- En Revancha, México (64%) perdió en Kingston y tumbó a los tres boletos.
+
+Qué dice el propio modelo sobre el perfil: la probabilidad de llegar a 10 aciertos era 37% para el conservador y 28% para el agresivo. El agresivo cambia unos 9 puntos de probabilidad de cobrar algo por una parte mayor de la bolsa de primer lugar. Es el costo conocido del perfil, no un error; queda anotado para decidir con ese número delante.
+
+Pesos: sin cambio (13 partidos con mercado y Elo en el historial, mínimo 60).
