@@ -45,13 +45,19 @@ cuando cada equipo tiene al menos MIN_XG partidos en su corte de casa o de visit
   M9     American Soccer Analysis, temporada regular de la MLS 2026, 17 partidos por lado.
          El partido es de playoffs: misma liga, otra fase.
 
-Porcentajes de venta del publico del 822: NO ENCONTRADOS (la pagina oficial seguia
-con la imagen del 821 a las 20:07 CDMX del 16-nov). Bolsa del 822: NO ENCONTRADA.
+Porcentajes de venta del publico del 822: imagen oficial "CONCURSO 822, porcentajes de
+los pronosticos acumulados al domingo 16 de noviembre" (loterianacional.gob.mx/
+ProgolMediaSemana/Momios, sello v=17112026122308, es decir subida el martes 17 a las
+12:23, 37 minutos antes del cierre). Leida el 19-nov; cada renglon suma 100.00.
+No entraron al modelo ni al boleto: el lunes 16 a las 20:07 la pagina seguia con la
+imagen del 821. Se agregan despues del cierre solo para poder calificar al publico en
+la auditoria. Bolsa del 822: NO ENCONTRADA.
 Referencia: en el 821 hubo 17 ganadores de 9 aciertos, $181,406.91 cada uno.
 """
 
 PARTIDOS = [
     dict(id="M1", local="Mexico", visita="Jamaica", tipo="seleccion", neutral=False, elo=(1837, 1574),
+         publico=[86.6, 7.88, 5.52],
          momios=[
              [1.14, 7.22, 12.20, "Pinnacle"],
              [1.13, 7.00, 17.00, "bet365"],
@@ -75,6 +81,7 @@ PARTIDOS = [
              [1.18, 7.00, 16.00, "Shangrila"],
          ]),
     dict(id="M2", local="Arsenal F", visita="Lyonnes F", tipo="club", neutral=False,
+         publico=[47.79, 17.7, 34.51],
          xg=(2.89, 0.54, 3.035, 0.335), xg_n=(2, 2),
          momios=[
              [3.48, 3.75, 1.98, "BetInAsia"],
@@ -87,6 +94,7 @@ PARTIDOS = [
              [3.30, 3.75, 1.89, "Stake.com"],
          ]),
     dict(id="M3", local="Dinamarca", visita="Noruega", tipo="seleccion", neutral=False, elo=(1920, 1909),
+         publico=[44.85, 19.62, 35.53],
          momios=[
              [2.32, 4.10, 2.82, "Pinnacle"],
              [2.25, 4.00, 2.75, "bet365"],
@@ -109,6 +117,7 @@ PARTIDOS = [
              [2.30, 3.95, 2.80, "LV BET (Polonia)"],
          ]),
     dict(id="M4", local="Polonia", visita="Suecia", tipo="seleccion", neutral=False, elo=(1663, 1784),
+         publico=[29.4, 20.21, 50.39],
          momios=[
              [2.33, 3.71, 2.97, "Pinnacle"],
              [2.30, 3.60, 2.80, "bet365"],
@@ -131,6 +140,7 @@ PARTIDOS = [
              [2.35, 3.60, 2.75, "Betfan (Polonia)"],
          ]),
     dict(id="M5", local="Rep. Irlanda", visita="Kosovo", tipo="seleccion", neutral=False, elo=(1703, 1700),
+         publico=[66.43, 19.85, 13.72],
          momios=[
              [2.13, 3.22, 3.89, "Pinnacle"],
              [2.05, 3.20, 3.75, "bet365"],
@@ -153,6 +163,7 @@ PARTIDOS = [
              [2.15, 3.20, 3.85, "LV BET (Polonia)"],
          ]),
     dict(id="M6", local="Cruzeiro", visita="Palmeiras", tipo="club", neutral=False,
+         publico=[28.77, 25.5, 45.73],
          xg=(1.77, 1.15, 1.49, 1.66), xg_n=(17, 17),
          momios=[
              [2.78, 3.41, 2.55, "Pinnacle"],
@@ -184,6 +195,7 @@ PARTIDOS = [
              [2.78, 3.40, 2.55, "bet105"],
          ]),
     dict(id="M7", local="Corinthians", visita="Botafogo", tipo="club", neutral=False,
+         publico=[52.13, 22.44, 25.43],
          xg=(1.66, 1.0, 1.38, 1.71), xg_n=(17, 17),
          momios=[
              [1.84, 3.76, 4.18, "Pinnacle"],
@@ -213,6 +225,7 @@ PARTIDOS = [
              [1.84, 3.75, 4.17, "bet105"],
          ]),
     dict(id="M8", local="Sao Paulo", visita="Fluminense", tipo="club", neutral=False,
+         publico=[40.57, 21.74, 37.69],
          xg=(1.66, 1.17, 1.4, 1.66), xg_n=(17, 17),
          momios=[
              [2.42, 3.27, 3.07, "Pinnacle"],
@@ -240,6 +253,7 @@ PARTIDOS = [
              [2.41, 3.25, 3.06, "BetOnline"],
          ]),
     dict(id="M9", local="Orlando", visita="Cincinnati", tipo="club", neutral=False,
+         publico=[48.25, 23.87, 27.88],
          xg=(1.86, 1.87, 1.6, 1.95), xg_n=(17, 17),
          momios=[
              [2.49, 3.97, 2.54, "Pinnacle"],

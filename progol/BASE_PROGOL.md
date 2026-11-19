@@ -15,7 +15,10 @@ Cómo leer la tabla de `auditoria.py`:
 - Los aciertos de cada boleto se cuentan con los ids de la salida, así que sirve igual para Progol (P, R) y para Media Semana (M).
 - `python3 pruebas.py` corre las pruebas del modelo, del armado y de la auditoría. Deben pasar antes de cada commit que toque código.
 
-Nota práctica: las páginas de resultados de temporada completa de betexplorer son enormes. Para marcadores conviene la nota de resumen de la jornada (UEFA, medios) o una búsqueda por partido.
+Notas prácticas:
+- Una tarea programada puede llegar con horas o días de retraso si la sesión está caída. Pasó el 17-nov: la revisión de las 11:15 llegó el 19, dos días después del cierre. El boleto que vale es el último entregado con margen; una revisión de último minuto es un extra, no una garantía. Al despertar, lo primero es ver si se pasó algún cierre y decirlo.
+- Los porcentajes de venta de Media Semana 822 se publicaron el martes a las 12:23, 37 minutos antes del cierre. No se puede contar con ellos para armar el boleto con tiempo. Para leerlos: captura de la página oficial, ampliar los renglones y comprobar que cada uno suma 100.
+- Las páginas de resultados de temporada completa de betexplorer son enormes. Para marcadores conviene la nota de resumen de la jornada (UEFA, medios) o una búsqueda por partido.
 
 ## Cuándo se cambia un valor del modelo
 
@@ -39,6 +42,7 @@ Decisión de diseño aprobada por el usuario el 2026-11-15, a partir de Media Se
 | 2026-11-15 | 2359 | Los tres boletos de Progol compartían el mismo pick sencillo en 8 de 14 partidos (P3, P4, P7, P8, P9, P10, P11, P13). Cuando fallaron P3, P11 y P13 cayeron los tres a la vez. No es un patrón estadístico sino de diseño: los boletos no estaban diversificados entre sí. Aprobado por el usuario el 15-nov; ver Reglas vigentes. | 1 |
 | 2026-11-15 | 2359 | Los picks contra el público del boleto agresivo (P1 local o empate, P5 empate) fallaron los dos: ganaron los que el público prefería. Dos casos no dicen nada sobre la estrategia; se sigue midiendo. | 1 |
 | 2026-11-17 | 2359 | Al cierre, en los 19 partidos con mercado, el porcentaje de venta del público tuvo mejor log-loss (0.931) que el mercado (0.973) y que el modelo (0.983). La ventaja pareada del público sobre el mercado es 0.041 ± 0.052: dentro del ruido. Un concurso no basta; si se repite en tres, probar el público como tercer estimador de la mezcla. | 1 |
+| 2026-11-19 | 2359 y MS 822 | Los dobles L/V perdieron contra el empate en 3 de 5 partidos distintos (P14 y R5 en el 2359, M4 en Media Semana 822; ganaron P6 y M3). El modelo daba al empate entre 25% y 28% en cada uno, así que se esperaban 1.3. No es señal de que el modelo subestime el empate: en los 26 partidos con estimación hubo 4 empates contra 6.4 ± 2.2 esperados. Por ahora es mala suerte en dónde cayeron; se sigue contando. | 2 |
 
 ## Bitácora
 
@@ -154,3 +158,26 @@ Qué falló:
 Qué dice el propio modelo sobre el perfil: la probabilidad de llegar a 10 aciertos era 37% para el conservador y 28% para el agresivo. El agresivo cambia unos 9 puntos de probabilidad de cobrar algo por una parte mayor de la bolsa de primer lugar. Es el costo conocido del perfil, no un error; queda anotado para decidir con ese número delante.
 
 Pesos: sin cambio (13 partidos con mercado y Elo en el historial, mínimo 60).
+
+### 2026-11-19, Media Semana 822, corte 07:55 CDMX (6 de 9 partidos)
+
+Falla de proceso, antes que nada: la revisión final programada para el martes 17 a las 11:15 no se ejecutó. La sesión no procesó nada entre el martes 17 hacia las 08:00 y el jueves 19 a las 07:44, y el aviso llegó con casi dos días de retraso, así que el usuario no recibió la confirmación prometida antes del cierre de las 13:00. El boleto vigente era el de la relectura del lunes a las 20:00. La auditoría del martes (cierre del 2359) también quedó a medias y se terminó hoy.
+
+Resultados (cada uno con dos fuentes): M1 México 1-0 Jamaica (L; sin tiempo extra, global 3-3 y pasó México por goles de visitante), M3 Dinamarca 2-3 Noruega (V), M4 Polonia 1-1 Suecia (E), M5 Rep. Irlanda 3-0 Kosovo (L), M6 Cruzeiro 2-1 Palmeiras (L), M7 Corinthians 4-0 Botafogo (L). Faltan M2, M8 y M9, que se juegan hoy.
+
+Boleto (1 L, 2 V, 3 LV, 4 LV, 5 L, 6 LEV, 7 L, 8 LEV, 9 LV; $1,080): 5 de 6. Falló M4: llevaba doble L/V y salió el empate, al que el modelo daba 26.2%. Ya no puede hacer 9; el máximo es 8, y 8 solo cobra si nadie hace 9.
+
+Qué falló y por qué:
+- La casilla 4 se decidió por un margen que no distingue nada: el boleto elegido tenía 4.11% de probabilidad de 9 aciertos y el segundo, con triple en el 4 y doble L/V en el 6, tenía 4.07%. El segundo va 6 de 6.
+- ¿Habría cambiado algo la revisión del martes? Por lo que se puede reconstruir, no en esa casilla. Pinnacle alargó el empate de Polonia-Suecia de 3.71 (lunes 20:10) a 3.95-3.99 (martes entre 11:09 y 12:15), es decir, lo hizo menos probable (de 25.8% a 24.1% sin margen), mientras el empate de Cruzeiro-Palmeiras se quedó en 3.41-3.42. Aplicando ese movimiento a los dos partidos, el mismo boleto sube a 4.19% y la alternativa se queda en 4.07%: el triple seguía en el 6. Fuentes: steamwatch.io (historial de Pinnacle de Polonia-Suecia) y titan007 (historial de Pinnacle de Cruzeiro-Palmeiras), leídas el 19-nov. No se reconstruyeron los otros siete partidos.
+- No hubo error de datos ni de cálculo: salió un resultado de 26%.
+
+Estimadores en los 6 partidos: modelo 0.858 y mercado 0.858 de log-loss (diferencia +0.000 ± 0.023); público 0.847. Acumulado de los dos concursos, 25 partidos con mercado y público: público 0.911, mercado 0.945, modelo 0.953. La ventaja del público sobre el mercado es 0.034 ± 0.044 y la del mercado sobre el modelo 0.007 ± 0.010: las dos dentro del ruido. La observación sobre el público se contará como segunda vez cuando cierre el 822.
+
+Público del 822 (oficial, acumulado al 16-nov): el boleto iba contra el público en la casilla 2 (Lyonnes: 34.5% del público contra 48.7% del modelo).
+
+Idea para decidir cuando dos boletos empatan, pendiente de que el usuario la apruebe: si la diferencia en probabilidad de acertar todo es menor que el margen de error y ya hay porcentajes del público, desempatar por el que cubre resultados menos jugados (comparte la bolsa con menos gente). En este concurso el empate del partido 4 lo llevaba 20.2% del público y el del partido 6, 25.5%: el desempate habría elegido el triple en el 4. No se podía aplicar: los porcentajes salieron 37 minutos antes del cierre. Antes de usarla hay que fijar qué diferencia cuenta como empate.
+
+Concursos a la venta: Progol 2360 (hasta el viernes 20-nov a las 21:00, bolsa garantizada de 5 millones). La página oficial de Media Semana sigue mostrando el 822; el 823 no está publicado.
+
+Pesos: sin cambio (17 partidos con mercado y Elo en el historial, mínimo 60).
