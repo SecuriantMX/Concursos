@@ -185,3 +185,13 @@ Idea para decidir cuando dos boletos empatan, pendiente de que el usuario la apr
 Concursos a la venta: Progol 2360 (hasta el viernes 20-nov a las 21:00, bolsa garantizada de 5 millones). La página oficial de Media Semana sigue mostrando el 822; el 823 no está publicado.
 
 Pesos: sin cambio (17 partidos con mercado y Elo en el historial, mínimo 60).
+
+### 2026-11-20, Media Semana 822, cierre de partidos (9 de 9)
+
+Resultados nuevos (3, dos fuentes cada uno): M2 Arsenal F 0-2 Lyonnes F (V), M8 São Paulo 0-1 Fluminense (V), M9 Orlando 1-3 Cincinnati (V).
+
+Boleto: 8 de 9. El único fallo fue M4 (doble L/V, salió empate). La apuesta contra el público en la casilla 2 (Lyonnes) acertó. Combinación oficial y premios: NO ENCONTRADOS todavía; el 20-nov a las 07:45 la página oficial seguía mostrando el 821. Falta saber si hubo ganadores de 9; si no los hubo, 8 aciertos cobra.
+
+Estimadores en los 9 partidos: modelo 0.895 y mercado 0.892 de log-loss (diferencia -0.003 ± 0.015); público 0.933. En este concurso el público quedó peor que el mercado, al revés que en el 2359, así que la observación sobre el público no se repite y se queda en 1. Acumulado de 28 partidos con mercado: modelo 0.954, mercado 0.947.
+
+Pesos: sin cambio (17 partidos con mercado y Elo, mínimo 60).
