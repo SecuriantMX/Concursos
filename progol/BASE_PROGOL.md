@@ -195,3 +195,11 @@ Boleto: 8 de 9. El único fallo fue M4 (doble L/V, salió empate). La apuesta co
 Estimadores en los 9 partidos: modelo 0.895 y mercado 0.892 de log-loss (diferencia -0.003 ± 0.015); público 0.933. En este concurso el público quedó peor que el mercado, al revés que en el 2359, así que la observación sobre el público no se repite y se queda en 1. Acumulado de 28 partidos con mercado: modelo 0.954, mercado 0.947.
 
 Pesos: sin cambio (17 partidos con mercado y Elo, mínimo 60).
+
+### 2026-11-21, cierre oficial de Media Semana 822 y primer partido del 2360
+
+Media Semana 822: la combinación oficial (L V V E L L L V V, mascarilla del 20-nov) coincide con las 9 letras registradas. Hubo 36 quinielas con 9 aciertos, $63,577.70 cada una (dato de Reporte Índigo; el bloque de premios de la mascarilla no salió en la lectura). El boleto hizo 8 y no cobró: Media Semana solo paga el mayor número de aciertos.
+
+Progol 2360 (boleto ligero de $1,080, solo mercado): P1 Juárez 3-3 Atlas (E). Llevaba V sencillo con 49.8%; el empate tenía 25.6%. Ya no puede hacer 14. Faltan 13 partidos.
+
+Pesos: sin cambio.

@@ -1,6 +1,6 @@
 {
- "corte": "2026-11-20 07:50 CDMX",
- "nota": "Solo marcadores a 90 minutos mas compensacion. Los 9 partidos jugados. M1 no tuvo tiempo extra. Combinacion oficial y premios del 822: aun no publicados el 20-nov a las 07:45 (la pagina oficial seguia en el 821).",
+ "corte": "2026-11-21 07:50 CDMX",
+ "nota": "Solo marcadores a 90 minutos mas compensacion. Concurso cerrado: las 9 letras coinciden con la combinacion oficial.",
  "partidos": {
   "M1": {
    "marcador": "1-0",
@@ -65,5 +65,24 @@
    "fuente": "https://www.fccincinnati.com/news/recap-orlando-city-sc-1-fc-cincinnati-3-audi-2026-mls-cup-playoffs-eastern-conference-wild-card-match",
    "fuente2": "https://www.mlssoccer.com/playoffs/2026/news/evander-leads-fc-cincinnati-to-wild-card-win-over-orlando-city"
   }
+ },
+ "oficial": {
+  "combinacion": "L V V E L L L V V",
+  "fuente": "https://www.loterianacional.gob.mx/Documentos/juegos/Concursosysorteos/Mascarillas/resultados%202026-11-20.pdf",
+  "premios": [
+   [
+    9,
+    36,
+    63577.7
+   ]
+  ],
+  "columnas_premios": [
+   "aciertos",
+   "quinielas ganadoras",
+   "premio por quiniela sencilla"
+  ],
+  "fuente_premios": "https://www.reporteindigo.com/deportes/consulta-los-resultados-de-la-quiniela-progol-media-semana-822-lista-de-premios-y-combinacion-ganadora-20261120-0024.html",
+  "nota_premios": "Una sola fuente, no oficial: el bloque de premios de la mascarilla no salio en la lectura del PDF.",
+  "leido": "2026-11-21 07:48 CDMX"
  }
 }

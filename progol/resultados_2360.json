@@ -1,0 +1,13 @@
+{
+ "corte": "2026-11-21 07:50 CDMX",
+ "nota": "Solo marcadores a 90 minutos mas compensacion.",
+ "partidos": {
+  "P1": {
+   "marcador": "3-3",
+   "res": "E",
+   "fecha": "2026-11-21",
+   "fuente": "https://espndeportes.espn.com/futbol/partido/_/juegoId/401877053/atlas-fc-juarez",
+   "fuente2": "https://www.tvazteca.com/aztecadeportes/estupinan-rescata-a-juarez-juarez-vs-atlas-j17-apertura-2026-liga-mx/"
+  }
+ }
+}
