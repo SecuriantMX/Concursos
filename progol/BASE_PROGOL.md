@@ -213,3 +213,17 @@ El boleto de $1,080 lleva 6 de 12. Fallos: P1, P7 y P13 (puse V, salió E), P5 (
 El favorito del mercado ganó 3 de 11 y el log-loss del mercado fue 1.119, peor que tirar al azar (1.099). Es una jornada de 12 partidos y no alcanza para concluir nada: el acumulado del mercado sigue en 0.998 sobre 40 partidos. Este boleto fue solo mercado (modo ligero), así que modelo y mercado son el mismo número y la jornada no aporta a la comparación entre ellos.
 
 Pesos: sin cambio (17 partidos con mercado y Elo, mínimo 60). Sin regla nueva.
+
+### 2026-11-22, diagnóstico del 2360 (lo pidió el usuario)
+
+Tres comprobaciones, ninguna encontró un error que corregir:
+
+1. Entradas. Los momios que usé (betexplorer, 20-nov 13:55) contra el cierre de la misma página (leído hoy) en los cinco partidos de Liga MX ya jugados: Juárez–Atlas 3.67/3.55/1.89 contra 3.64/3.66/1.93; Pachuca–Toluca 2.63/3.84/2.22 contra 2.61/3.88/2.32; Santos–León 2.31/3.59/2.64 contra 2.22/3.55/2.97; Pumas–Monterrey 2.50/3.46/2.50 contra 2.62/3.39/2.56; Tigres–América 3.29/3.51/2.00 contra 3.28/3.65/2.04. Mismo local, mismo favorito, ningún pick cambia. Los otros siete jugados no se cotejaron contra el cierre (habría costado cinco lecturas más). Palmeiras–Flamengo: dos páginas confirman a Flamengo como favorito; la magnitud (54% en mi lectura de 3 casas) queda sin verificar.
+2. Armado. Busqué el boleto que maximiza llegar a 10, a 11 y a 12 aciertos en vez de a 14. En el 2360 y en el 2359 sale exactamente el mismo boleto que el entregado. No hay otro objetivo que hubiera dado otra combinación.
+3. Azar. Con mis propias probabilidades el boleto esperaba 6.9 aciertos en estos 12 partidos; hizo 6. Quedar en 6 o menos tenía 39% de probabilidad. Log-loss observado 1.119 contra 1.067 esperado, z = 0.71.
+
+Lo que sí explica el resultado es la jornada: el favorito promedió 43.4% (47.8% en el 2359) y con $1,080 la probabilidad de cobrar algo era 24.8% desde antes de jugar. Referencia de premios (2359, oficial): 10 aciertos pagaron $123.41 y 11 pagaron $613.22 por quiniela sencilla.
+
+Rendimiento por peso en el 2360: P(14) por cada $1,000 gastados fue 0.053% con una sencilla de $15, 0.039% con $480, 0.033% con $1,080 y 0.024% con $4,860. Cada doble o triple adicional compra menos probabilidad que el anterior.
+
+Sin cambio de pesos ni de código. Sin regla nueva.
