@@ -1,6 +1,6 @@
 {
- "corte": "2026-11-21 07:50 CDMX",
- "nota": "Solo marcadores a 90 minutos mas compensacion.",
+ "corte": "2026-11-22 07:50 CDMX",
+ "nota": "Solo marcadores a 90 minutos mas compensacion. P2 a P14 vienen de UNA sola fuente (quinielaganadora.com, que publica el marcador del partido completo); se cotejan contra la combinacion oficial cuando cierre el concurso. P14 fue final de copa: si hubo tiempo extra, el 0-2 podria no ser el marcador a 90 minutos. Faltan P6 y P12, que se juegan el 22-nov.",
  "partidos": {
   "P1": {
    "marcador": "3-3",
@@ -8,6 +8,72 @@
    "fecha": "2026-11-21",
    "fuente": "https://espndeportes.espn.com/futbol/partido/_/juegoId/401877053/atlas-fc-juarez",
    "fuente2": "https://www.tvazteca.com/aztecadeportes/estupinan-rescata-a-juarez-juarez-vs-atlas-j17-apertura-2026-liga-mx/"
+  },
+  "P2": {
+   "marcador": "2-0",
+   "res": "L",
+   "fecha": "2026-11-22",
+   "fuente": "https://quinielaganadora.com/progol-2360-resultados/"
+  },
+  "P3": {
+   "marcador": "1-2",
+   "res": "V",
+   "fecha": "2026-11-22",
+   "fuente": "https://quinielaganadora.com/progol-2360-resultados/"
+  },
+  "P4": {
+   "marcador": "0-2",
+   "res": "V",
+   "fecha": "2026-11-22",
+   "fuente": "https://quinielaganadora.com/progol-2360-resultados/"
+  },
+  "P5": {
+   "marcador": "1-0",
+   "res": "L",
+   "fecha": "2026-11-22",
+   "fuente": "https://quinielaganadora.com/progol-2360-resultados/"
+  },
+  "P7": {
+   "marcador": "1-1",
+   "res": "E",
+   "fecha": "2026-11-22",
+   "fuente": "https://quinielaganadora.com/progol-2360-resultados/"
+  },
+  "P8": {
+   "marcador": "3-2",
+   "res": "L",
+   "fecha": "2026-11-22",
+   "fuente": "https://quinielaganadora.com/progol-2360-resultados/"
+  },
+  "P9": {
+   "marcador": "0-1",
+   "res": "V",
+   "fecha": "2026-11-22",
+   "fuente": "https://quinielaganadora.com/progol-2360-resultados/"
+  },
+  "P10": {
+   "marcador": "0-1",
+   "res": "V",
+   "fecha": "2026-11-22",
+   "fuente": "https://quinielaganadora.com/progol-2360-resultados/"
+  },
+  "P11": {
+   "marcador": "0-1",
+   "res": "V",
+   "fecha": "2026-11-22",
+   "fuente": "https://quinielaganadora.com/progol-2360-resultados/"
+  },
+  "P13": {
+   "marcador": "1-1",
+   "res": "E",
+   "fecha": "2026-11-22",
+   "fuente": "https://quinielaganadora.com/progol-2360-resultados/"
+  },
+  "P14": {
+   "marcador": "0-2",
+   "res": "V",
+   "fecha": "2026-11-22",
+   "fuente": "https://quinielaganadora.com/progol-2360-resultados/"
   }
  }
 }

@@ -203,3 +203,13 @@ Media Semana 822: la combinación oficial (L V V E L L L V V, mascarilla del 20-
 Progol 2360 (boleto ligero de $1,080, solo mercado): P1 Juárez 3-3 Atlas (E). Llevaba V sencillo con 49.8%; el empate tenía 25.6%. Ya no puede hacer 14. Faltan 13 partidos.
 
 Pesos: sin cambio.
+
+### 2026-11-22, Progol 2360 con 12 de 14 partidos
+
+Marcadores del viernes y sábado leídos de quinielaganadora.com (una sola fuente, marcador de partido completo; se cotejan con la combinación oficial al cierre). P14 fue final de copa: si hubo tiempo extra, el 0-2 puede no ser el de 90 minutos. Faltan P6 y P12, que se juegan hoy.
+
+El boleto de $1,080 lleva 6 de 12. Fallos: P1, P7 y P13 (puse V, salió E), P5 (puse V, salió L), P10 y P11 (puse L, salió V). Los tres dobles (P2, P3, P4) y el triple de P8 entraron; los seis fallos fueron sencillos. Tope alcanzable: 8, así que ya no llega a 10 y no cobra. El boleto hipotético de $4,860 iría en 7 de 12.
+
+El favorito del mercado ganó 3 de 11 y el log-loss del mercado fue 1.119, peor que tirar al azar (1.099). Es una jornada de 12 partidos y no alcanza para concluir nada: el acumulado del mercado sigue en 0.998 sobre 40 partidos. Este boleto fue solo mercado (modo ligero), así que modelo y mercado son el mismo número y la jornada no aporta a la comparación entre ellos.
+
+Pesos: sin cambio (17 partidos con mercado y Elo, mínimo 60). Sin regla nueva.
