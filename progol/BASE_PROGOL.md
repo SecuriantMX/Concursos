@@ -237,3 +237,11 @@ Mercado en los 14 partidos: log-loss 1.113, favorito 4 de 13. Acumulado del merc
 Pendiente: la mascarilla oficial del 23-nov no estaba publicada a las 07:45 (404). Falta cotejar combinación y premios, y confirmar P14 a 90 minutos.
 
 Pesos: sin cambio (17 partidos con mercado y Elo, mínimo 60). Sin regla nueva.
+
+### 2026-11-23, boleto de Media Semana 823 (versión ligera)
+
+Lo pidió el usuario con captura de la boleta el 22-nov. Los partidos 1 a 4 venían sin equipos; se llenaron con la tabla final del Apertura 2026 (El Financiero, ESPN y Mediotiempo coinciden): Pachuca–Guadalajara, León–Cruz Azul, Monterrey–América, Toluca–Atlas. No se leyó Lotería Nacional: el número 823 y las fechas vienen de quinielaganadora.com y la hora de cierre quedó sin verificar.
+
+Momios: promedio de betexplorer con 4 casas por partido, una lectura el 23-nov a las 12:05. Solo mercado.
+
+Boleto de $1,080 (2 triples, 3 dobles): 1:LEV 2:LEV 3:LV 4:L 5:L 6:LV 7:V 8:V 9:LV. P(9) = 5.47%, P(8) = 20.6%. Comprobado por fuerza bruta sobre todas las combinaciones válidas.
