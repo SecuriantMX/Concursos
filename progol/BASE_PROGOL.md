@@ -227,3 +227,13 @@ Lo que sí explica el resultado es la jornada: el favorito promedió 43.4% (47.8
 Rendimiento por peso en el 2360: P(14) por cada $1,000 gastados fue 0.053% con una sencilla de $15, 0.039% con $480, 0.033% con $1,080 y 0.024% con $4,860. Cada doble o triple adicional compra menos probabilidad que el anterior.
 
 Sin cambio de pesos ni de código. Sin regla nueva.
+
+### 2026-11-23, Progol 2360 con los 14 partidos
+
+Entraron los dos que faltaban: P6 Guadalajara 1-0 Cruz Azul (L, lo llevaba sencillo) y P12 Lorient 1-1 Rennes (E, lo llevaba triple). El boleto de $1,080 terminó en 8 de 14 y no cobra (el premio empieza en 10). Los seis fallos fueron sencillos: tres empates (P1, P7, P13) y tres favoritos que perdieron (P5, P10, P11).
+
+Mercado en los 14 partidos: log-loss 1.113, favorito 4 de 13. Acumulado del mercado: 1.002 en 42 partidos. El boleto fue solo mercado, así que no hay comparación modelo contra mercado en este concurso.
+
+Pendiente: la mascarilla oficial del 23-nov no estaba publicada a las 07:45 (404). Falta cotejar combinación y premios, y confirmar P14 a 90 minutos.
+
+Pesos: sin cambio (17 partidos con mercado y Elo, mínimo 60). Sin regla nueva.
