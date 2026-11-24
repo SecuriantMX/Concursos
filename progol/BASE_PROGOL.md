@@ -245,3 +245,9 @@ Lo pidió el usuario con captura de la boleta el 22-nov. Los partidos 1 a 4 ven�
 Momios: promedio de betexplorer con 4 casas por partido, una lectura el 23-nov a las 12:05. Solo mercado.
 
 Boleto de $1,080 (2 triples, 3 dobles): 1:LEV 2:LEV 3:LV 4:L 5:L 6:LV 7:V 8:V 9:LV. P(9) = 5.47%, P(8) = 20.6%. Comprobado por fuerza bruta sobre todas las combinaciones válidas.
+
+### 2026-11-23 (22:08), relectura de Media Semana 823
+
+El usuario mandó otra captura de la app con los equipos de los partidos 1 a 4 ya escritos; coinciden con lo deducido de la tabla, mismo local y visitante. Se releyeron los momios (betexplorer, 3 casas en Liga MX y 4 en Champions) y se usó esa lectura en los nueve partidos. El mayor cambio fue Monterrey–América: Monterrey pasó de 38.7% a 41.0% y América de 36.0% a 32.5%.
+
+Boleto con la lectura nueva ($1,080): 1:LEV 2:V 3:LEV 4:L 5:L 6:LV 7:LV 8:V 9:LV, P(9) = 5.22%. El boleto del mediodía, evaluado con los momios nuevos, da 5.12%. Los cuatro mejores boletos quedan entre 5.15% y 5.22%: la diferencia es menor que el error de los momios, así que los dos boletos son equivalentes.
