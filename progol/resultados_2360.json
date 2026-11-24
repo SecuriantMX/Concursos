@@ -1,6 +1,6 @@
 {
- "corte": "2026-11-23 07:50 CDMX",
- "nota": "Los 14 partidos con marcador. P2 a P14 vienen de UNA sola fuente (quinielaganadora.com, marcador de partido completo, pagina modificada 2026-11-23T04:35Z). La mascarilla oficial del 23-nov aun no estaba publicada (404 a las 07:45 CDMX); falta cotejar la combinacion oficial y los premios. P14 fue final de copa: confirmar que el 0-2 es a 90 minutos.",
+ "corte": "2026-11-24 07:50 CDMX",
+ "nota": "Concurso cerrado. Las 14 letras registradas coinciden con la combinacion oficial (mascarilla del 23-nov), incluido P14. Los marcadores de P2 a P14 vienen de quinielaganadora.com; la letra de cada uno queda confirmada por la oficial.",
  "partidos": {
   "P1": {
    "marcador": "3-3",
@@ -87,5 +87,51 @@
    "fecha": "2026-11-23",
    "fuente": "https://quinielaganadora.com/progol-2360-resultados/"
   }
+ },
+ "oficial": {
+  "combinacion_progol": "E L V V L L E L V V V E E V",
+  "premios_progol": [
+   [
+    14,
+    0,
+    null
+   ],
+   [
+    13,
+    1,
+    1436803.2
+   ],
+   [
+    12,
+    26,
+    48353.95
+   ],
+   [
+    11,
+    248,
+    5069.35
+   ],
+   [
+    10,
+    1740,
+    825.74
+   ]
+  ],
+  "premios_revancha": [
+   [
+    7,
+    5966,
+    595.75
+   ]
+  ],
+  "columnas_premios": [
+   "aciertos",
+   "quinielas ganadoras",
+   "premio por quiniela sencilla"
+  ],
+  "bolsa_siguiente_progol": 8900000,
+  "fuente": "https://www.loterianacional.gob.mx/Documentos/juegos/Concursosysorteos/Mascarillas/resultados%202026-11-23.pdf",
+  "leido": "2026-11-24 07:46 CDMX",
+  "nota": "La combinacion de Revancha no se registra: en la lectura del PDF salio repetida la de Progol."
  }
 }

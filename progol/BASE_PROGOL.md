@@ -251,3 +251,13 @@ Boleto de $1,080 (2 triples, 3 dobles): 1:LEV 2:LEV 3:LV 4:L 5:L 6:LV 7:V 8:V 9:
 El usuario mandó otra captura de la app con los equipos de los partidos 1 a 4 ya escritos; coinciden con lo deducido de la tabla, mismo local y visitante. Se releyeron los momios (betexplorer, 3 casas en Liga MX y 4 en Champions) y se usó esa lectura en los nueve partidos. El mayor cambio fue Monterrey–América: Monterrey pasó de 38.7% a 41.0% y América de 36.0% a 32.5%.
 
 Boleto con la lectura nueva ($1,080): 1:LEV 2:V 3:LEV 4:L 5:L 6:LV 7:LV 8:V 9:LV, P(9) = 5.22%. El boleto del mediodía, evaluado con los momios nuevos, da 5.12%. Los cuatro mejores boletos quedan entre 5.15% y 5.22%: la diferencia es menor que el error de los momios, así que los dos boletos son equivalentes.
+
+### 2026-11-24, cierre oficial del Progol 2360
+
+Combinación oficial (mascarilla del 23-nov): E L V V L L E L V V V E E V. Coincide con las 14 letras registradas, incluido P14. El boleto quedó en 8 de 14, sin premio.
+
+Premios oficiales: nadie hizo 14; 13 aciertos, 1 quiniela, $1,436,803.20; 12 aciertos, 26 quinielas, $48,353.95; 11 aciertos, 248, $5,069.35; 10 aciertos, 1,740, $825.74. Revancha 7 aciertos: 5,966 quinielas, $595.75. Bolsa garantizada del siguiente concurso: 8.9 millones.
+
+Dato para tener en cuenta: 10 aciertos pagaron $825.74 aquí y $123.41 en el 2359. En la jornada difícil hubo 1,740 quinielas con 10; en la fácil, 11,306. El premio chico depende mucho de qué tan pareja es la jornada (dos concursos; es observación, no regla).
+
+Media Semana 823: sin partidos jugados todavía (el primero es hoy a las 14:00). Pesos: sin cambio.
