@@ -268,4 +268,4 @@ M5 Arsenal 1-1 Dortmund (E; ESPN, NBC Sports y Bundesliga.com coinciden). El bol
 
 M6 Feyenoord–Porto: NO ENCONTRADO en las seis lecturas del día (Firecrawl se quedó sin créditos diarios; las búsquedas devolvieron partidos de otros años y la página de UEFA no trae marcador). Se busca mañana.
 
-Nota práctica: las lecturas de momios del 23-nov gastaron los créditos diarios de Firecrawl que usa la auditoría de la mañana siguiente. Pesos: sin cambio.
+Nota práctica: Firecrawl respondió sin créditos diarios a las 07:45, aunque esta sesión no lo había usado desde el corte de las 13:24 del día anterior. La causa no la conozco. Si se repite, la auditoría de la mañana necesita otra vía de lectura. Pesos: sin cambio.
