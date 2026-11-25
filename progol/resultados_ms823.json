@@ -1,0 +1,13 @@
+{
+ "corte": "2026-11-25 07:55 CDMX",
+ "nota": "Solo marcadores a 90 minutos mas compensacion. M6 Feyenoord-Porto se jugo el 24-nov pero el marcador quedo NO ENCONTRADO (dos busquedas y la pagina de UEFA sin marcador; Firecrawl sin creditos hasta las 13:24). M7 a M9 se juegan el 25-nov, M1 a M4 el 25 y 26.",
+ "partidos": {
+  "M5": {
+   "marcador": "1-1",
+   "res": "E",
+   "fecha": "2026-11-25",
+   "fuente": "https://www.espn.com/soccer/match/_/gameId/401915295/borussia-dortmund-arsenal",
+   "fuente2": "https://www.bundesliga.com/en/bundesliga/news/arsenal-fc-borussia-dortmund-match-report-highlights-matchday-5-40134"
+  }
+ }
+}

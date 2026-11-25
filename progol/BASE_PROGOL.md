@@ -261,3 +261,11 @@ Premios oficiales: nadie hizo 14; 13 aciertos, 1 quiniela, $1,436,803.20; 12 aci
 Dato para tener en cuenta: 10 aciertos pagaron $825.74 aquí y $123.41 en el 2359. En la jornada difícil hubo 1,740 quinielas con 10; en la fácil, 11,306. El premio chico depende mucho de qué tan pareja es la jornada (dos concursos; es observación, no regla).
 
 Media Semana 823: sin partidos jugados todavía (el primero es hoy a las 14:00). Pesos: sin cambio.
+
+### 2026-11-25, Media Semana 823: primer resultado
+
+M5 Arsenal 1-1 Dortmund (E; ESPN, NBC Sports y Bundesliga.com coinciden). El boleto llevaba L sencillo con 68%; el empate tenía 19%. Ya no puede hacer 9. Lo mismo le pasa al boleto del mediodía del 23-nov, que también llevaba L.
+
+M6 Feyenoord–Porto: NO ENCONTRADO en las seis lecturas del día (Firecrawl se quedó sin créditos diarios; las búsquedas devolvieron partidos de otros años y la página de UEFA no trae marcador). Se busca mañana.
+
+Nota práctica: las lecturas de momios del 23-nov gastaron los créditos diarios de Firecrawl que usa la auditoría de la mañana siguiente. Pesos: sin cambio.
