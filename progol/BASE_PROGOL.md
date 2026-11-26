@@ -46,7 +46,7 @@ Decisión de diseño aprobada por el usuario el 2026-11-15, a partir de Media Se
 | 2026-11-15 | 2359 | Los tres boletos de Progol compartían el mismo pick sencillo en 8 de 14 partidos (P3, P4, P7, P8, P9, P10, P11, P13). Cuando fallaron P3, P11 y P13 cayeron los tres a la vez. No es un patrón estadístico sino de diseño: los boletos no estaban diversificados entre sí. Aprobado por el usuario el 15-nov; ver Reglas vigentes. | 1 |
 | 2026-11-15 | 2359 | Los picks contra el público del boleto agresivo (P1 local o empate, P5 empate) fallaron los dos: ganaron los que el público prefería. Dos casos no dicen nada sobre la estrategia; se sigue midiendo. | 1 |
 | 2026-11-17 | 2359 | Al cierre, en los 19 partidos con mercado, el porcentaje de venta del público tuvo mejor log-loss (0.931) que el mercado (0.973) y que el modelo (0.983). La ventaja pareada del público sobre el mercado es 0.041 ± 0.052: dentro del ruido. Un concurso no basta; si se repite en tres, probar el público como tercer estimador de la mezcla. | 1 |
-| 2026-11-19 | 2359 y MS 822 | Los dobles L/V perdieron contra el empate en 3 de 5 partidos distintos (P14 y R5 en el 2359, M4 en Media Semana 822; ganaron P6 y M3). El modelo daba al empate entre 25% y 28% en cada uno, así que se esperaban 1.3. No es señal de que el modelo subestime el empate: en los 26 partidos con estimación hubo 4 empates contra 6.4 ± 2.2 esperados. Por ahora es mala suerte en dónde cayeron; se sigue contando. | 2 |
+| 2026-11-19 | 2359 y MS 822 | Los dobles L/V perdieron contra el empate en 3 de 5 partidos distintos (P14 y R5 en el 2359, M4 en Media Semana 822; ganaron P6 y M3). El modelo daba al empate entre 25% y 28% en cada uno, así que se esperaban 1.3. No es señal de que el modelo subestime el empate: en los 26 partidos con estimación hubo 4 empates contra 6.4 ± 2.2 esperados. Por ahora es mala suerte en dónde cayeron; se sigue contando. Actualización 26-nov: en el 2360 los tres dobles L/V entraron y en Media Semana 823 cayó uno de tres (M9, Sp. Lisboa 2-2 Man. United). Total: 4 de 11 perdidos por empate contra 2.9 esperados. Empates en todos los partidos con estimación: 11 contra 12.4 ± 3.0 en 50. Ya se vio en tres concursos, pero los números no muestran que el empate esté subestimado, así que no sube a regla. | 3 |
 
 ## Bitácora
 
@@ -269,3 +269,11 @@ M5 Arsenal 1-1 Dortmund (E; ESPN, NBC Sports y Bundesliga.com coinciden). El bol
 M6 Feyenoord–Porto: NO ENCONTRADO en las seis lecturas del día (Firecrawl se quedó sin créditos diarios; las búsquedas devolvieron partidos de otros años y la página de UEFA no trae marcador). Se busca mañana.
 
 Nota práctica: Firecrawl respondió sin créditos diarios a las 07:45, aunque esta sesión no lo había usado desde el corte de las 13:24 del día anterior. La causa no la conozco. Si se repite, la auditoría de la mañana necesita otra vía de lectura. Pesos: sin cambio.
+
+### 2026-11-26, Media Semana 823 con 7 de 9 partidos
+
+Marcadores nuevos (quinielaganadora.com, una sola fuente): M3 Monterrey 0-0 América (E), M4 Toluca 2-0 Atlas (L), M6 Feyenoord 0-1 Porto (V), M7 Slavia Praga 0-1 Villarreal (V), M8 Brujas 0-3 Liverpool (V), M9 Sp. Lisboa 2-2 Man. United (E).
+
+El boleto de la relectura (23-nov 22:08) lleva 5 de 7. Fallos: M5 (L sencillo, salió E) y M9 (doble L/V, salió E). M1 va con triple y M2 con Cruz Azul sencillo; lo más que puede hacer es 7. El boleto del mediodía del 23-nov llevaría 4 de 7, porque su doble L/V en M3 perdió con el 0-0 que el triple de la relectura sí cubrió.
+
+Mercado en los 7 partidos: log-loss 0.989, favorito 4 de 7. Acumulado: 1.000 en 49 partidos. Sin comparación modelo contra mercado (boleto solo mercado). Pesos: sin cambio. Sin regla nueva.
