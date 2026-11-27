@@ -277,3 +277,18 @@ Marcadores nuevos (quinielaganadora.com, una sola fuente): M3 Monterrey 0-0 Amé
 El boleto de la relectura (23-nov 22:08) lleva 5 de 7. Fallos: M5 (L sencillo, salió E) y M9 (doble L/V, salió E). M1 va con triple y M2 con Cruz Azul sencillo; lo más que puede hacer es 7. El boleto del mediodía del 23-nov llevaría 4 de 7, porque su doble L/V en M3 perdió con el 0-0 que el triple de la relectura sí cubrió.
 
 Mercado en los 7 partidos: log-loss 0.989, favorito 4 de 7. Acumulado: 1.000 en 49 partidos. Sin comparación modelo contra mercado (boleto solo mercado). Pesos: sin cambio. Sin regla nueva.
+
+### 2026-11-26 (19:40), revisión de calibración (la pidió el usuario)
+
+Pregunta: si las predicciones empeoran conforme avanza el trabajo. Medido con las probabilidades propias de cada concurso:
+
+| Concurso | Modo | Aciertos del boleto | Esperados | Log-loss observado / esperado |
+|---|---|---|---|---|
+| 2359 (conservador) | completo | 9 de 14 | 8.9 | 0.956 / 0.994 |
+| MS 822 | completo | 8 de 9 | 6.6 | 0.895 / 1.011 |
+| 2360 | ligero | 8 de 14 | 8.4 | 1.113 / 1.069 |
+| MS 823 (7 jugados) | ligero | 5 de 7 | 5.2 | 0.989 / 0.992 |
+
+Total en 50 partidos: log-loss 0.994 contra 1.018 esperado (z = -0.45); el favorito ganó 24 de 49 contra 24.1 esperados. No hay deterioro: cada boleto hizo lo que sus probabilidades anunciaban. El único resultado fuera de lo normal fue el 8 de 9 de Media Semana 822, que estuvo por encima (percentil 96).
+
+Lo que sí cambió desde el 19-nov es que cada boleto lleva menos trabajo (modo ligero: solo mercado, promedio de 3 o 4 casas, sin porcentajes del público). Ningún peso se ha movido desde el inicio porque la muestra no lo permite (17 partidos con mercado y Elo, mínimo 60).
