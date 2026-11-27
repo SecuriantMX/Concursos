@@ -292,3 +292,11 @@ Pregunta: si las predicciones empeoran conforme avanza el trabajo. Medido con la
 Total en 50 partidos: log-loss 0.994 contra 1.018 esperado (z = -0.45); el favorito ganó 24 de 49 contra 24.1 esperados. No hay deterioro: cada boleto hizo lo que sus probabilidades anunciaban. El único resultado fuera de lo normal fue el 8 de 9 de Media Semana 822, que estuvo por encima (percentil 96).
 
 Lo que sí cambió desde el 19-nov es que cada boleto lleva menos trabajo (modo ligero: solo mercado, promedio de 3 o 4 casas, sin porcentajes del público). Ningún peso se ha movido desde el inicio porque la muestra no lo permite (17 partidos con mercado y Elo, mínimo 60).
+
+### 2026-11-27, Media Semana 823 con los 9 partidos
+
+M1 Pachuca 2-1 Guadalajara (L, iba con triple) y M2 León 0-4 Cruz Azul (V, iba sencillo). Telemundo, Claro Sports y Milenio coinciden. El boleto de la relectura terminó en 7 de 9; fallos M5 y M9, los dos por empate. El del mediodía del 23-nov habría hecho 6.
+
+Pendiente: combinación oficial y premios. La mascarilla del 27-nov no se pudo leer a las 07:50 (Firecrawl sin créditos, el otro lector la devolvió vacía). Media Semana solo paga al mayor número de aciertos; sin el dato oficial no se sabe si 7 alcanzó.
+
+Mercado en los 9 partidos: ver tabla de auditoria.py. Pesos: sin cambio. Sin regla nueva.

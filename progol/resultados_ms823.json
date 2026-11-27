@@ -1,6 +1,6 @@
 {
- "corte": "2026-11-26 07:50 CDMX",
- "nota": "Solo marcadores a 90 minutos mas compensacion. M3, M4 y M6 a M9 vienen de UNA sola fuente (quinielaganadora.com, leida el 26-nov); son fase de liga de Champions e ida de cuartos, sin tiempo extra. Se cotejan con la combinacion oficial al cierre. Faltan M1 y M2, que se juegan el 26-nov en la noche.",
+ "corte": "2026-11-27 07:55 CDMX",
+ "nota": "Los 9 partidos con marcador a 90 minutos. Falta cotejar la combinacion oficial y los premios: la mascarilla del 27-nov no se pudo leer a las 07:50 (Firecrawl sin creditos hasta las 13:24 y el otro lector la devolvio vacia).",
  "partidos": {
   "M5": {
    "marcador": "1-1",
@@ -13,13 +13,15 @@
    "marcador": "0-0",
    "res": "E",
    "fecha": "2026-11-26",
-   "fuente": "https://quinielaganadora.com/progol-media-semana-823-resultados/"
+   "fuente": "https://quinielaganadora.com/progol-media-semana-823-resultados/",
+   "fuente2": "https://clarosports.com/futbol/liga-mx/resultados-liguilla-liga-mx-2026-como-quedaron-los-cuartos-de-final-de-ida-y-que-necesitan-para-clasificar"
   },
   "M4": {
    "marcador": "2-0",
    "res": "L",
    "fecha": "2026-11-26",
-   "fuente": "https://quinielaganadora.com/progol-media-semana-823-resultados/"
+   "fuente": "https://quinielaganadora.com/progol-media-semana-823-resultados/",
+   "fuente2": "https://clarosports.com/futbol/liga-mx/resultados-liguilla-liga-mx-2026-como-quedaron-los-cuartos-de-final-de-ida-y-que-necesitan-para-clasificar"
   },
   "M6": {
    "marcador": "0-1",
@@ -44,6 +46,20 @@
    "res": "E",
    "fecha": "2026-11-26",
    "fuente": "https://quinielaganadora.com/progol-media-semana-823-resultados/"
+  },
+  "M1": {
+   "marcador": "2-1",
+   "res": "L",
+   "fecha": "2026-11-27",
+   "fuente": "https://www.telemundo.com/deportes/liga-mx/chivas-cae-ante-pachuca-y-cruz-azul-golea-a-leon-en-los-cuartos-de-fin-rcna611520",
+   "fuente2": "https://www.clarosports.com/futbol/liga-mx/pachuca-vs-chivas-en-vivo-cuartos-de-final-del-apertura-2026-resultado-y-goles-del-partido-de-ida-hoy-26-de-noviembre/"
+  },
+  "M2": {
+   "marcador": "0-4",
+   "res": "V",
+   "fecha": "2026-11-27",
+   "fuente": "https://www.telemundo.com/deportes/liga-mx/chivas-cae-ante-pachuca-y-cruz-azul-golea-a-leon-en-los-cuartos-de-fin-rcna611520",
+   "fuente2": "https://www.milenio.com/futbol/liga-mx/leon-vs-cruz-azul-en-vivo-ida-cuartos-de-final-2026"
   }
  }
 }
