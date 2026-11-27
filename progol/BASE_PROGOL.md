@@ -299,4 +299,4 @@ M1 Pachuca 2-1 Guadalajara (L, iba con triple) y M2 León 0-4 Cruz Azul (V, iba 
 
 Pendiente: combinación oficial y premios. La mascarilla del 27-nov no se pudo leer a las 07:50 (Firecrawl sin créditos, el otro lector la devolvió vacía). Media Semana solo paga al mayor número de aciertos; sin el dato oficial no se sabe si 7 alcanzó.
 
-Mercado en los 9 partidos: ver tabla de auditoria.py. Pesos: sin cambio. Sin regla nueva.
+Mercado en los 9 partidos: log-loss 0.974, favorito 5 de 9. Sin comparación modelo contra mercado (boleto solo mercado). Pesos: sin cambio. Sin regla nueva.
