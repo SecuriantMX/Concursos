@@ -1,6 +1,6 @@
 {
- "corte": "2026-11-27 07:55 CDMX",
- "nota": "Los 9 partidos con marcador a 90 minutos. Falta cotejar la combinacion oficial y los premios: la mascarilla del 27-nov no se pudo leer a las 07:50 (Firecrawl sin creditos hasta las 13:24 y el otro lector la devolvio vacia).",
+ "corte": "2026-11-28 07:50 CDMX",
+ "nota": "Concurso cerrado. Las 9 letras registradas coinciden con la combinacion oficial (mascarilla del 27-nov).",
  "partidos": {
   "M5": {
    "marcador": "1-1",
@@ -61,5 +61,24 @@
    "fuente": "https://www.telemundo.com/deportes/liga-mx/chivas-cae-ante-pachuca-y-cruz-azul-golea-a-leon-en-los-cuartos-de-fin-rcna611520",
    "fuente2": "https://www.milenio.com/futbol/liga-mx/leon-vs-cruz-azul-en-vivo-ida-cuartos-de-final-2026"
   }
+ },
+ "oficial": {
+  "combinacion": "L V E L E V V V E",
+  "premios": [
+   [
+    9,
+    53,
+    49721.46
+   ]
+  ],
+  "columnas_premios": [
+   "aciertos",
+   "quinielas ganadoras",
+   "premio por quiniela sencilla"
+  ],
+  "total_premios": 2635237.38,
+  "fuente": "https://loterianacional.gob.mx/Documentos/juegos/Concursosysorteos/Mascarillas/resultados%202026-11-27.pdf",
+  "leido": "2026-11-28 07:47 CDMX",
+  "nota": "El PDF se leyo como texto sin maquetacion; la fila de premios se identifico porque 53 x 49,721.46 = 2,635,237.38, el total de premios del concurso 823."
  }
 }

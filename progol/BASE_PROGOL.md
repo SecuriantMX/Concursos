@@ -314,3 +314,13 @@ xG (footystats) con muestra suficiente solo en cuatro partidos: P1, P2, P13 y P1
 Boleto de $1,080 (2 triples, 3 dobles): 1:L 2:V 3:L 4:L 5:LEV 6:LEV 7:L 8:L 9:LV 10:LV 11:L 12:L 13:L 14:LV. P(14) = 0.060%, P(10 o más) = 31.2%, aciertos esperados 8.69. Con solo mercado sale el mismo boleto.
 
 Nota práctica: esta máquina deja correr 2 agentes a la vez por flujo (4 procesadores). Para llegar al cierre se repartió el trabajo en cinco flujos simultáneos; todo quedó listo en 15 minutos. Consumo de los agentes: unos 4.6 millones de tokens.
+
+### 2026-11-28, cierre oficial de Media Semana 823
+
+Combinación oficial (mascarilla del 27-nov): L V E L E V V V E. Coincide con las 9 letras registradas. Hubo 53 quinielas con 9 aciertos, $49,721.46 cada una. El boleto hizo 7 y no cobró.
+
+Progol 2361: ningún partido jugado todavía; el primero es hoy a las 11:30.
+
+Nota práctica: con Firecrawl sin créditos, la mascarilla oficial en PDF sí se deja leer con TinyFish fetch_content sobre loterianacional.gob.mx (sin "www"). El texto sale sin maquetación; la fila de premios se reconoce multiplicando ganadores por premio contra el total.
+
+Pesos: sin cambio.
