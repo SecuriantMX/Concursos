@@ -194,6 +194,7 @@ PARTIDOS = [
          ]),
     # P9: Bundesliga 2026-27 / Jornada 11 (fase regular). 2026-11-29 08:30 (domingo; 14:30 UTC / 15:30 CET). Europa-Park Stadion, Freiburg im Breisgau, Alemania. Lectura: 2026-11-27 19:13 (lecturas entre 19:10 y 19:14)
     #   promedio del comparador (no entra al calculo): 2.7/3.83/2.35 con 10 casas
+    #   referencia del segundo lector: 2.72/3.82/2.29 (Mostbet, leido en el comparador dailysports (no usado por el lector): )
     #   fila descartada: Ladbrokes: terna identica a otra casa
     #   fila descartada: Coral: terna identica a otra casa
     #   fuente: https://oddsrun.com/match/football/de/123/12153818/germany-bundesliga-i/sc-freiburg-vs-rb-leipzig/
@@ -217,6 +218,7 @@ PARTIDOS = [
          ]),
     # P10: Ligue 1 2026-27 / Jornada 12. 2026-11-29 10:15. Stadium de Toulouse. Lectura: 2026-11-27 19:14
     #   promedio del comparador (no entra al calculo): 2.42/3.59/2.73 con 16 casas
+    #   referencia del segundo lector: 2.4/3.6/2.8 (Betfair Sportsbook en https://oddsforge.co.uk/football/ligue-1/toulous)
     #   fuente: https://www.steamwatch.io/match/71c08940a73e9f42d503449f052a1bdf
     #   fuente: https://www.wincomparator.com/predictions/toulouse-rennes-8532504/
     dict(id='P10', local='Toulouse', visita='Rennes', tipo='club', neutral=False,
@@ -239,6 +241,7 @@ PARTIDOS = [
          ]),
     # P11: Ligue 1 2026-27 / Jornada 12. 2026-11-29 13:45. Groupama Stadium (wincomparator lo nombra Parc Olympique Lyonnais), Lyon. Lectura: 2026-11-27 19:14
     #   promedio del comparador (no entra al calculo): 2.35/3.35/2.99 con 16 casas
+    #   referencia del segundo lector: 2.4/3.3/3 (Betfair Sportsbook en https://oddsforge.co.uk/football/ligue-1/lyon-vs)
     #   fila descartada: Melbet: terna identica a otra casa
     #   fuente: https://www.steamwatch.io/match/ca8aa566e27e1d05b47e8151b2066f9a
     #   fuente: https://www.wincomparator.com/predictions/lyon-monaco-8532501/
@@ -261,6 +264,7 @@ PARTIDOS = [
          ]),
     # P12: Eredivisie 2026-27 / Jornada 14 (fase regular). 2026-11-29 07:30 (domingo; 13:30 UTC / 14:30 CET). De Kuip (Stadion Feijenoord), Rotterdam, Paises Bajos. Lectura: 2026-11-27 19:13 (lecturas entre 19:10 y 19:13)
     #   promedio del comparador (no entra al calculo): 2.21/3.88/2.8 con 10 casas
+    #   referencia del segundo lector: 2.26/4.02/2.81 (Betwinner, leido en el comparador dailysports (no usado por el lector))
     #   fila descartada: Coral: terna identica a otra casa
     #   fuente: https://oddsrun.com/match/football/nl/66/12026853/netherlands-eredivisie/feyenoord-vs-ajax/
     #   fuente: https://www.singlebet.net/odds/feyenoord-vs-ajax-2026-11-29-3861791/
@@ -288,6 +292,7 @@ PARTIDOS = [
     #   fuente: https://www.betexplorer.com/match-odds-old/8b9sgtZa/1/1x2/1/en/
     #   fuente: https://www.oddsmath.com/api/v1/live-odds.json/?event_id=5154704&cat_id=0&include_exchanges=1&language=en&country_code=MX
     dict(id='P13', local='Mirassol', visita='Paranaense', tipo='club', neutral=False,
+         xg=(1.75, 1.38, 1.21, 1.7), xg_n=(18, 18),  # https://footystats.org/clubs/ca-paranaense-622 ; https://footystats.org/clubs/mirassol-futebol-clube-2721
          momios=[
              [2, 3.4, 3.75, 'bet365 (bet365.us)'],
              [2.1, 3.6, 3.3, 'BetMGM (BetMGM.us)'],
@@ -306,6 +311,7 @@ PARTIDOS = [
     #   fuente: https://www.betexplorer.com/match-odds-old/CvDzX0Ok/1/1x2/1/en/
     #   fuente: https://www.oddsmath.com/api/v1/live-odds.json/?event_id=5156416&cat_id=0&include_exchanges=1&language=en&country_code=MX
     dict(id='P14', local='Charlotte', visita='Chicago', tipo='club', neutral=False,
+         xg=(1.55, 1.51, 1.49, 1.49), xg_n=(17, 17),  # https://footystats.org/usa/chicago-fire-vs-charlotte-fc-h2h-stats
          momios=[
              [2.63, 3.9, 2.4, 'bet365 (bet365.us)'],
              [2.55, 3.9, 2.35, 'BetMGM (BetMGM.us)'],
