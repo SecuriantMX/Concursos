@@ -13,9 +13,12 @@ betexplorer). Un segundo agente releyo filas, local y horario de cada lectura; s
 precio de referencia van en el comentario de cada partido. Se descartan promedios de comparador,
 intercambios, margenes fuera de 1% a 15%, casas repetidas y ternas identicas a la de otra casa.
 
-xG: footystats.org, columnas At Home / At Away de la competencia en curso, con el numero de
-partidos de la muestra (xg_n). El Poisson solo entra cuando cada lado tiene al menos MIN_XG
-partidos; en las ligas europeas van 5 a 7 jornadas por lado y no alcanza.
+xG: solo entra al Poisson cuando cada lado tiene al menos MIN_XG partidos en su corte de casa o
+de visita. Eso deja cuatro partidos: P1 y P2 (Liga MX, fase regular), P13 (Brasileirao) y P14 (MLS),
+todos con footystats.org, columnas At Home / At Away. El xG de footystats es un modelo propio (tiros,
+precision, ataques peligrosos), no xG por posicion de tiro; para el America en casa otra fuente
+(querostats) da 1.65 en vez de 2.10 y no separa el xG en contra. En las ligas europeas van 5 a 7
+partidos por lado: los valores quedan guardados pero no se usan.
 
 Porcentajes de venta del publico: NO LEIDOS. Loteria Nacional los publica como imagen
 (loterianacional.gob.mx/Progol/Momios) y no se pudo abrir en esta sesion.
@@ -31,6 +34,7 @@ En todos cuenta solo el marcador a 90 minutos.
 PARTIDOS = [
     # P1: Liga MX Apertura 2026 / Cuartos de final, vuelta. 2026-11-28 21:10. Estadio Banorte, Ciudad de Mexico (asi lo nombran tvazteca y excelsior; titan007 lo llama 'Mexico City Stadium' y footballnation 'Estadio Azteca'). Lectura: 2026-11-27 19:16
     #   promedio del comparador (no entra al calculo): 2.11/3.12/3.47 con 16 casas
+    #   referencia del segundo lector: 2.16/3.2/3.5 (Caliente.mx citada por AS Mexico: local +116, empate +220, visita +250)
     #   fila descartada: FanDuel: terna identica a otra casa
     #   fila descartada: BetMGM: terna identica a otra casa
     #   fila descartada: Betway: terna identica a otra casa
@@ -52,6 +56,7 @@ PARTIDOS = [
          ]),
     # P2: Liga MX Apertura 2026 / Cuartos de final, vuelta. 2026-11-28 19:00. Estadio Jalisco, Guadalajara. Lectura: 2026-11-27 19:16
     #   promedio del comparador (no entra al calculo): 2.91/3.63/2.15 con 16 casas
+    #   referencia del segundo lector: 3/3.7/2.2 (Mundo Deportivo, 'Momios 1X2 / resultado final': Atlas 3.00, empate 3.)
     #   fila descartada: BetMGM: terna identica a otra casa
     #   fuente: https://1x2d.titan007.com/3116377.js
     #   fuente: https://www.betexplorer.com/football/mexico/liga-mx/atlas-toluca/rP4cBDo4/1x2/
@@ -74,8 +79,9 @@ PARTIDOS = [
          ]),
     # P3: Liga de Expansion MX, Apertura 2026 / Final, partido de vuelta (ida: Atl. Morelia 4-1 Atletico La Paz, segun betexplorer). 2026-11-28 21:00 (sabado). Estadio Guaycura, La Paz, Baja California Sur. Lectura: 2026-11-27 19:11
     #   promedio del comparador (no entra al calculo): 1.93/3.37/3.52 con 14 casas
-    #   fila descartada: SBOBET: margen 17.0% fuera de 1% a 15%
-    #   fila descartada: Bettogoal: terna identica a otra casa
+    #   referencia del segundo lector: 1.909/3.35/3.45 (DraftKings, moneyline a 3 vias publicado por ESPN: local -110, empate )
+    #   fila descartada: SBOBET: invalida segun el segundo lector: Margen fuera de rango: 1/1.931 + 1/3.035 + 1/3.102 - 1 = 16.97% (limite 15%). El valor esta bien copiado de oddsmath, pe
+    #   fila descartada: Bettogoal: invalida segun el segundo lector: Duplicado de Suprabets: mismo identificador de evento en el feed (uid 0801e2715a y 0831e2715a), mismo precio 1.88/3.25/3
     #   fuente: https://www.oddsmath.com/api/v1/live-odds.json/?event_id=5154097&cat_id=0&include_exchanges=1&language=en&country_code=MX
     dict(id='P3', local='La Paz', visita='Morelia', tipo='club', neutral=False,
          momios=[
@@ -87,8 +93,9 @@ PARTIDOS = [
          ]),
     # P4: Campeonato Concacaf W 2026 (CONCACAF W Championship), selecciones mayores femeniles; otorga boleto al Mundial Femenil Brasil 2027 / Cuartos de final, partido unico a eliminacion directa. 2026-11-28 15:30 (sabado). Texas Health Mansfield Stadium, Mansfield, Texas, Estados Unidos. Lectura: 2026-11-27 19:12
     #   promedio del comparador (no entra al calculo): 1.16/5.86/12.1 con 5 casas
+    #   referencia del segundo lector: 1.299/5/6.5 (Caliente.mx, citado por ABC Noticias como 'Momios de Caliente.mx': Mex)
     #   fila descartada: Marathonbet: terna identica a otra casa
-    #   fila descartada: Bettogoal: terna identica a otra casa
+    #   fila descartada: Bettogoal: invalida segun el segundo lector: Duplicado de Suprabets: mismo identificador de evento en el feed (uid 0801e3cd8f y 0831e3cd8f) y mismo precio 1.19/5.4/1
     #   fuente: https://www.oddsmath.com/api/v1/live-odds.json/?event_id=5161278&cat_id=0&include_exchanges=1&language=en&country_code=MX
     dict(id='P4', local='Mexico Femenil', visita='Haiti Femenil', tipo='seleccion', neutral=True,
          momios=[
@@ -122,7 +129,10 @@ PARTIDOS = [
          ]),
     # P6: Premier League 2026-27 / Jornada 12 (fase regular). 2026-11-29 08:05. Craven Cottage, Londres (dato de fragmentos de buscador: https://matchesnow.co.uk/leagues/premier-league/2026/fulham-bournemouth y https://soccernet.ng/2026/11/fulham-vs-bournemouth-preview-team-news-h2h.html). Lectura: 2026-11-27 19:16
     #   promedio del comparador (no entra al calculo): 2.83/3.41/2.43 con 4 casas
-    #   fila descartada: Coral: terna identica a otra casa
+    #   referencia del segundo lector: 2.7/3.4/2.4 (LeoVegas en https://linechoes.com/football/matchup/fulham-vs-bournemou)
+    #   fila descartada: DraftKings: leida en una pagina con sello de las 16:50, no en la lectura de las 19:16
+    #   fila descartada: FanDuel: leida en una pagina con sello de las 16:50, no en la lectura de las 19:16
+    #   fila descartada: BetMGM (EE.UU.): leida en una pagina con sello de las 16:50, no en la lectura de las 19:16
     #   fuente: https://www.oddschecker.com/football/english/premier-league/fulham-v-bournemouth/winner
     #   fuente: https://www.sportytrader.com/en/odds/fulham-bournemouth-8558927/
     #   fuente: https://www.steamwatch.io/match/56ea91809ff11d3a67557a21b3371cb9
@@ -136,16 +146,18 @@ PARTIDOS = [
              [2.875, 3.4, 2.45, 'Betfair Sportsbook'],
              [2.7, 3.5, 2.4, 'William Hill'],
              [2.8, 3.4, 2.5, 'Unibet (UK)'],
-             [2.8, 3.5, 2.5, 'DraftKings'],
-             [2.9, 3.4, 2.45, 'FanDuel'],
-             [2.7, 3.5, 2.5, 'BetMGM (EE.UU.)'],
              [2.7, 3.4, 2.5, 'Ladbrokes'],
+             [2.7, 3.5, 2.5, 'Coral'],
              [2.75, 3.4, 2.5, 'Betfred'],
              [2.75, 3.4, 2.4, 'Betway'],
              [2.75, 3.5, 2.4, 'BoyleSports'],
          ]),
     # P7: Premier League 2026-27 / Jornada 12 (fase regular). 2026-11-29 10:30. Emirates Stadium, Londres. Lectura: 2026-11-27 19:16
     #   promedio del comparador (no entra al calculo): 1.96/3.65/3.66 con 4 casas
+    #   referencia del segundo lector: 1.98/3.55/3.45 (LeoVegas en https://linechoes.com/football/matchup/arsenal-vs-manchest)
+    #   fila descartada: DraftKings: leida en una pagina con sello de las 16:50, no en la lectura de las 19:16
+    #   fila descartada: FanDuel: leida en una pagina con sello de las 16:50, no en la lectura de las 19:16
+    #   fila descartada: BetMGM (EE.UU.): leida en una pagina con sello de las 16:50, no en la lectura de las 19:16
     #   fila descartada: Betway: terna identica a otra casa
     #   fuente: https://www.oddschecker.com/football/english/premier-league/arsenal-v-man-city/winner
     #   fuente: https://www.sportytrader.com/en/odds/arsenal-manchester-city-8558923/
@@ -160,9 +172,6 @@ PARTIDOS = [
              [2, 3.6, 3.75, 'Betfair Sportsbook'],
              [1.95, 3.6, 3.5, 'William Hill'],
              [2, 3.6, 3.6, 'Unibet (UK)'],
-             [2, 3.7, 3.6, 'DraftKings'],
-             [2, 3.6, 3.7, 'FanDuel'],
-             [1.98, 3.75, 3.5, 'BetMGM (EE.UU.)'],
              [1.95, 3.6, 3.6, 'Paddy Power'],
              [2, 3.5, 3.6, 'Sky Bet'],
              [1.95, 3.7, 3.5, 'Ladbrokes'],

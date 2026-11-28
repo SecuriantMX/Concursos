@@ -300,3 +300,17 @@ M1 Pachuca 2-1 Guadalajara (L, iba con triple) y M2 León 0-4 Cruz Azul (V, iba 
 Pendiente: combinación oficial y premios. La mascarilla del 27-nov no se pudo leer a las 07:50 (Firecrawl sin créditos, el otro lector la devolvió vacía). Media Semana solo paga al mayor número de aciertos; sin el dato oficial no se sabe si 7 alcanzó.
 
 Mercado en los 9 partidos: log-loss 0.974, favorito 5 de 9. Sin comparación modelo contra mercado (boleto solo mercado). Pesos: sin cambio. Sin regla nueva.
+
+### 2026-11-27, boleto del Progol 2361 (modo completo)
+
+El usuario mandó la captura de la boleta a las 19:03 y activó los flujos de agentes para este boleto. La auditoría diaria sigue en modo ligero mientras no diga otra cosa.
+
+Oficial (mascarilla de Lotería Nacional del 22-nov y su cuenta de Facebook): concurso 2361, venta hasta el viernes 27 a las 21:00, sencilla $15, bolsa 8.9 millones. La lista coincide con la captura en los 14 partidos. Los porcentajes de venta del público están publicados como imagen y no se pudieron leer.
+
+Momios: una fila por casa, leídos entre las 19:10 y las 19:16; entre 9 y 14 casas válidas en doce partidos, 5 en La Paz–Morelia y 3 en México Femenil–Haití Femenil. Un segundo agente releyó las filas y confirmó local y horario con otra fuente en los 14: sin diferencias. Se quitaron tres filas de Fulham–Bournemouth y tres de Arsenal–Man. City porque venían de una página con sello de las 16:50.
+
+xG (footystats) con muestra suficiente solo en cuatro partidos: P1, P2, P13 y P14. En las ligas europeas van 5 a 7 partidos por lado y el Poisson no entra.
+
+Boleto de $1,080 (2 triples, 3 dobles): 1:L 2:V 3:L 4:L 5:LEV 6:LEV 7:L 8:L 9:LV 10:LV 11:L 12:L 13:L 14:LV. P(14) = 0.060%, P(10 o más) = 31.2%, aciertos esperados 8.69. Con solo mercado sale el mismo boleto.
+
+Nota práctica: esta máquina deja correr 2 agentes a la vez por flujo (4 procesadores). Para llegar al cierre se repartió el trabajo en cinco flujos simultáneos; todo quedó listo en 15 minutos. Consumo de los agentes: unos 4.6 millones de tokens.
